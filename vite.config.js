@@ -1,5 +1,5 @@
 import { defineConfig } from "vite";
 
 export default defineConfig({
-  base: "/", // ← укажи точно имя репозитория!
+  base: "/sveton/", // ← укажи точно имя репозитория!
 });

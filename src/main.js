@@ -63,7 +63,7 @@ new Swiper(".portfolio-slides", {
   // },
 });
 document.addEventListener("DOMContentLoaded", () => {
-  const menuItems = document.querySelectorAll(".menu-top__item");
+  const menuItems = document.querySelectorAll(".menu-top__item-link");
 
   if (menuItems) {
     menuItems.forEach((item) => {

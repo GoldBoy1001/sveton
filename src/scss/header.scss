@@ -27,7 +27,7 @@
   }
 
   /* Стили для псевдоэлемента подчёркивания */
-  .menu-top__item::after {
+  .menu-top__item-link::after {
     content: "";
     position: absolute;
     bottom: -1px;
@@ -38,16 +38,16 @@
     transition: width 0.3s ease; /* Плавное изменение ширины */
   }
   @media (hover: hover) {
-    &__item:hover {
+    &__item-link:hover {
       cursor: pointer;
       color: #015dae;
     }
   }
 
-  &__item.active-menu-item {
+  &__item-link.active-menu-item {
     color: #015dae; /* Цвет текста для активного пункта */
   }
-  &__item.active-menu-item:after {
+  &__item-link.active-menu-item:after {
     width: 100%; /* Ширина подчёркивания при наведении */
   }
 

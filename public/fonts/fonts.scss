@@ -1,0 +1,57 @@
+/* src/assets/fonts/fonts.css */
+
+/* Regular */
+@font-face {
+  font-family: "Involve";
+  src: url("/src/assets/fonts/Involve-Regular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Bold */
+@font-face {
+  font-family: "Involve";
+  src: url("/src/assets/fonts/Involve-Bold.otf") format("opentype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+/* Medium */
+@font-face {
+  font-family: "Involve";
+  src: url("/src/assets/fonts/Involve-Medium.otf") format("opentype");
+  font-weight: 500; /* Medium weight is typically 500 */
+  font-style: normal;
+}
+
+/* Medium Oblique */
+@font-face {
+  font-family: "Involve";
+  src: url("/src/assets/fonts/Involve-MediumOblique.otf") format("opentype");
+  font-weight: 500; /* Medium weight is typically 500 */
+  font-style: oblique;
+}
+
+/* Oblique */
+@font-face {
+  font-family: "Involve";
+  src: url("/src/assets/fonts/Involve-Oblique.otf") format("opentype");
+  font-weight: normal;
+  font-style: oblique;
+}
+
+/* SemiBold */
+@font-face {
+  font-family: "Involve";
+  src: url("/src/assets/fonts/Involve-SemiBold.otf") format("opentype");
+  font-weight: 600; /* SemiBold weight is typically 600 */
+  font-style: normal;
+}
+
+/* SemiBold Oblique */
+@font-face {
+  font-family: "Involve";
+  src: url("/src/assets/fonts/Involve-SemiBoldOblique.otf") format("opentype");
+  font-weight: 600; /* SemiBold weight is typically 600 */
+  font-style: oblique;
+}

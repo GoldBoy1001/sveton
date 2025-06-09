@@ -1,0 +1,70 @@
+@import "normalize.css";
+@import "../../public/fonts/fonts.scss";
+@import "./slider/swiper-bundle.min.css";
+// @import "variable.scss";
+ul li {
+  list-style: none;
+}
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+h2 {
+  font-weight: 500;
+  font-style: normal;
+  color: #111111;
+  font-size: 48px;
+}
+h3 {
+  font-weight: 500;
+  font-style: normal;
+  color: #111111;
+  font-size: 32px;
+}
+a {
+  text-decoration: none;
+  color: #111111;
+}
+body {
+  font-family: "Involve", sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 16px;
+}
+// =====================================================================
+$width: 1870px;
+
+$color: #015dae;
+$bgcard: #f2f7fb;
+
+%text {
+  font-weight: 500;
+  font-style: normal;
+  font-size: 20px;
+}
+
+%grid {
+  display: grid;
+  grid-template: auto / 1fr minmax(auto, $width) 1fr;
+  padding: 40px 15px;
+}
+// ======================================================================
+.body {
+  min-height: 100vh;
+  display: grid;
+  grid-template: minmax(24px, auto) 1fr minmax(250px, auto) / 1fr;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+}
+.swiper {
+  width: 1870px;
+  // height: 300px;
+}
+// ========== Blocks  =========================//
+@import "header.scss";
+@import "main.scss";
+
+@import "footer.scss";

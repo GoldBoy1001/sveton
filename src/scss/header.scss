@@ -1,0 +1,61 @@
+.header {
+  grid-area: header;
+  display: grid;
+  grid-template: auto / 1fr minmax(auto, 1870px) 1fr;
+  padding: 20px 15px;
+  column-gap: 20px;
+  &__body {
+    grid-column: 2/3;
+  }
+}
+
+.menu-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  &__list {
+    display: flex;
+    gap: 24px;
+  }
+
+  // .menu-top__item
+
+  &__item {
+    cursor: pointer;
+    transition: color 0.3s ease;
+    position: relative;
+  }
+
+  /* Стили для псевдоэлемента подчёркивания */
+  .menu-top__item::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 0; /* Начальная ширина подчёркивания */
+    height: 1px; /* Толщина подчёркивания */
+    background-color: #015dae; /* Цвет подчёркивания */
+    transition: width 0.3s ease; /* Плавное изменение ширины */
+  }
+  @media (hover: hover) {
+    &__item:hover {
+      cursor: pointer;
+      color: #015dae;
+    }
+  }
+
+  &__item.active-menu-item {
+    color: #015dae; /* Цвет текста для активного пункта */
+  }
+  &__item.active-menu-item:after {
+    width: 100%; /* Ширина подчёркивания при наведении */
+  }
+
+  &__icons {
+    display: flex;
+    column-gap: 20px;
+  }
+  &__icons img {
+    cursor: pointer;
+  }
+}

@@ -2,7 +2,7 @@ import { defineConfig } from "vite";
 import { resolve } from "path";
 
 export default defineConfig({
-  base: "/sveton", // или /имя-репозитория/ для GitHub Pages
+  base: "/sveton/", // или /имя-репозитория/ для GitHub Pages
   build: {
     rollupOptions: {
       input: {

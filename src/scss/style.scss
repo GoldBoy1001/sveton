@@ -55,6 +55,41 @@ $bgcard: #f2f7fb;
   grid-template: auto / 1fr minmax(auto, $width) 1fr;
   padding: 40px 15px;
 }
+
+%cardGrid {
+  grid-column: 2/3;
+  display: grid;
+  grid-template: auto / repeat(auto-fit, minmax(360px, 1fr));
+  column-gap: 20px;
+  row-gap: 40px;
+}
+%card {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  position: relative;
+}
+%cardImg {
+  background-color: #f2f7fb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 0px;
+}
+%cardText {
+  font-weight: 500;
+  font-size: 32px;
+  color: #111111;
+  font-style: normal;
+}
+%cardIcon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+}
 // ======================================================================
 .body {
   min-height: 100vh;

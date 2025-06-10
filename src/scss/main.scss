@@ -719,11 +719,13 @@
   &__card {
     background-color: $bgcard;
     position: relative;
-    padding: 20px;
     cursor: pointer;
     display: grid;
     overflow: hidden;
   }
+  // &__card a {
+  //   justify-self: end;
+  // }
 
   // .cards-catalog__card1
 
@@ -753,12 +755,28 @@
     max-width: 100%;
     justify-self: end;
   }
+  &__a {
+    justify-self: end;
+    align-self: end;
+  }
   &__img1 {
     max-width: 100%;
     justify-self: center;
   }
+  &__a1 {
+    justify-self: center;
+    align-self: center;
+  }
   &__img2 {
     align-self: end;
+  }
+  &__a2 {
+    align-self: end;
+    justify-self: center;
+  }
+  &__a3 {
+    align-self: start;
+    justify-self: center;
   }
 
   // .cards-catalog__card2

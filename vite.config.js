@@ -11,6 +11,7 @@ export default defineConfig({
         catalogSection: resolve(__dirname, "catalog-section.html"),
         catalogElement: resolve(__dirname, "catalog-element.html"),
         catalogElementDetail: resolve(__dirname, "catalog-element-detail.html"),
+        seervices: resolve(__dirname, "seervices.html"),
       },
     },
   },

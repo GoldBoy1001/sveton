@@ -9,6 +9,7 @@ export default defineConfig({
         main: resolve(__dirname, "index.html"),
         catalog: resolve(__dirname, "catalog.html"),
         catalogSection: resolve(__dirname, "catalog-section.html"),
+        catalogElement: resolve(__dirname, "catalog-element.html"),
       },
     },
   },

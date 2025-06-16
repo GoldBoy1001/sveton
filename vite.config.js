@@ -13,6 +13,7 @@ export default defineConfig({
         catalogElementDetail: resolve(__dirname, "catalog-element-detail.html"),
         services: resolve(__dirname, "services.html"),
         servicesDetail: resolve(__dirname, "services-detail.html"),
+        servisy: resolve(__dirname, "servisy.html"),
       },
     },
   },

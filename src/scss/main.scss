@@ -1351,3 +1351,70 @@
 }
 .right-services-detail {
 }
+
+// ===================  servisy  ================================
+
+.servisy {
+  // .servisy__body
+  @extend %grid;
+  &__body {
+    grid-column: 2/3;
+  }
+
+  // .servisy__title
+
+  &__title {
+  }
+
+  // .servisy__cards
+
+  &__cards {
+    display: grid;
+    grid-template: minmax(445px, auto) / repeat(auto-fit, minmax(400px, 1fr));
+    gap: 20px;
+  }
+
+  // .servisy__card
+
+  &__card {
+  }
+}
+.card-servisy {
+  // .card-servisy__img
+  background-color: $bgcard;
+  padding: 20px;
+  display: grid;
+  grid-template: 1fr minmax(49px, auto) minmax(58px, auto) / 1fr;
+  @media (hover: hover) {
+    &:hover {
+      color: $color;
+    }
+    &:hover &__title {
+      color: $color;
+    }
+    &:hover &__img {
+      stroke: $color;
+    }
+  }
+
+  &__img {
+  }
+
+  // .card-servisy__title
+
+  &__title {
+    span {
+      display: block;
+    }
+  }
+
+  // .card-servisy__text
+
+  &__text {
+    font-size: 20px;
+    margin-top: 20px;
+    span {
+      display: block;
+    }
+  }
+}

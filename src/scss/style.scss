@@ -91,7 +91,28 @@ $bgcard: #f2f7fb;
   height: 36px;
   cursor: pointer;
 }
+
+%btn {
+  margin-top: 20px;
+  font-weight: 500;
+  padding: 20px 40px;
+  cursor: pointer;
+  transition: 0.3s;
+  color: #ffffff;
+  background-color: $color;
+  @media (hover: hover) {
+    &:hover {
+      background-color: #ffffff;
+      outline: 1px solid #111111;
+      color: #111111;
+    }
+  }
+}
 // ======================================================================
+body.popup-open {
+  overflow: hidden;
+  height: 100vh;
+}
 .body {
   min-height: 100vh;
   display: grid;

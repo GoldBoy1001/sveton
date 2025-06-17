@@ -1418,3 +1418,815 @@
     }
   }
 }
+
+// ======================   ================================
+
+.lighting-calculator {
+  @extend %grid;
+  &__container {
+    grid-column: 2/3;
+    max-width: 992px;
+  }
+
+  &__title {
+  }
+
+  &__note {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    font-weight: 500;
+    gap: 10px;
+    margin-bottom: 60px;
+    cursor: pointer;
+  }
+
+  &__group {
+    margin-bottom: 40px;
+  }
+
+  &__subtitle {
+    margin-bottom: 20px;
+  }
+
+  &__btn,
+  &__submit {
+    margin-top: 20px;
+    font-weight: 500;
+    padding: 20px 40px;
+    cursor: pointer;
+    transition: 0.3s;
+    color: #ffffff;
+    background-color: $color;
+    font-size: 20px;
+    @media (hover: hover) {
+      &:hover {
+        background-color: #ffffff;
+        outline: 1px solid #111111;
+        color: #111111;
+      }
+    }
+    a {
+      color: inherit;
+    }
+  }
+
+  &__dimensions {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    max-width: 870px;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  &__dimension {
+    @extend %text;
+    span {
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+  }
+
+  &__control {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    button {
+      background: none;
+      cursor: pointer;
+    }
+
+    span {
+      min-width: 60px;
+      text-align: center;
+      margin-bottom: 0px;
+    }
+  }
+
+  &__area {
+    margin-top: 60px;
+
+    span {
+      @extend %text;
+    }
+  }
+
+  &__area-value {
+    font-size: 96px;
+    font-weight: 700;
+
+    span {
+      font-size: 96px;
+      margin-left: 4px;
+      font-weight: 700;
+    }
+  }
+
+  &__coefficients {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    @media (min-width: 600px) {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  &__coefficient-group {
+    display: flex;
+    flex-direction: column;
+    @extend %text;
+    span {
+      margin-bottom: 20px;
+    }
+
+    label {
+      margin-bottom: 6px;
+
+      input {
+        margin-right: 6px;
+      }
+    }
+  }
+
+  &__lighting-params {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    @media (min-width: 600px) {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  &__lighting-param {
+    flex: 1 1 150px;
+
+    span {
+      display: block;
+      margin-bottom: 20px;
+      font-size: 14px;
+    }
+
+    .lighting-calculator__control,
+    .lighting-calculator__surface-options,
+    .lighting-calculator__reserve-options {
+      display: flex;
+      gap: 10px;
+    }
+
+    button {
+      padding: 20px 40px;
+
+      background-color: #fff;
+      cursor: pointer;
+      font-size: 14px;
+      transition: 0.3s;
+
+      &.active {
+        background-color: $color;
+        color: #fff;
+        border-color: $color;
+      }
+
+      &:hover {
+        background-color: $color;
+        color: #ffffff;
+      }
+    }
+  }
+
+  &__submit {
+    margin-top: 30px;
+  }
+
+  &__disclaimer {
+    margin-top: 16px;
+    max-width: 480px;
+    opacity: 0.6;
+  }
+}
+.lighting-calculator__control {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  .dimension-input {
+    width: 60px;
+    font-size: 18px;
+    text-align: right;
+    border: none;
+    background: transparent;
+    font-weight: 500;
+    outline: none;
+    font-size: 32px;
+
+    // Убираем стрелки у input type="number"
+    -moz-appearance: textfield;
+    appearance: textfield;
+
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+
+  .dimension-unit {
+    font-size: 32px;
+  }
+
+  .btn-decrement,
+  .btn-increment {
+    width: 24px;
+    height: 24px;
+
+    cursor: pointer;
+    border-radius: 2px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      background: #f0f0f0;
+    }
+  }
+  .btn-decrement {
+    padding-bottom: 5px;
+  }
+}
+
+/* Общая стилизация */
+.lighting-calculator__coefficient-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* Скрываем input */
+.lighting-calculator__coefficient-group input[type="radio"] {
+  display: none;
+}
+
+/* Стили для label как radio */
+.lighting-calculator__coefficient-group label {
+  position: relative;
+  padding-left: 38px;
+  cursor: pointer;
+
+  user-select: none;
+}
+
+/* Кастомный круг */
+.lighting-calculator__coefficient-group label::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  outline: 2px solid $color;
+  border-radius: 50%;
+  background-color: transparent;
+  transition: outline 0.1s ease;
+}
+
+/* Checked: внутренний просвет */
+.lighting-calculator__coefficient-group
+  input[type="radio"]:checked
+  + label::before {
+  outline: 10px solid $color;
+  width: 10px;
+  height: 10px;
+  margin: 0px 6px;
+}
+
+.lighting-calculator__control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  button {
+    width: 24px;
+    height: 24px;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 2px;
+    padding: 0;
+    // display: flex;
+    // align-items: center;
+    // justify-content: center;
+    border: none;
+  }
+
+  input.lighting-input {
+    width: 80px;
+    padding: 6px;
+    text-align: center;
+    font-size: 32px;
+    font-weight: 500;
+    /* 🔽 Удаляем стандартные стрелки */
+    -moz-appearance: textfield;
+  }
+
+  /* 🔽 Удаляем стрелки в WebKit (Chrome, Safari) */
+  input.lighting-input::-webkit-outer-spin-button,
+  input.lighting-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  .unit {
+    font-size: 32px;
+    font-weight: 500;
+    font-style: normal;
+    margin-bottom: 0px;
+  }
+}
+.lighting-calculator__lighting-param span {
+  font-size: 20px;
+  font-weight: 500;
+}
+.lighting-calculator__control .btn-decrement,
+.lighting-calculator__control .btn-increment {
+  transition: 0.1s;
+}
+.lighting-calculator__control .btn-decrement:hover,
+.lighting-calculator__control .btn-increment:hover {
+  background-color: $color;
+  color: #ffffff;
+}
+.lighting-calculator__group-koef,
+.lighting-calculator__group-params {
+  max-width: 863px;
+}
+
+.lighting-calculator__submit:disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: default;
+}
+
+// ===========================       lighting-calculator-popup-calculation-algorithm        ==============================
+
+.lighting-calculator-popup-calculation-algorithm {
+  // .lighting-calculator-popup-calculation-algorithm__body
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: hsl(0, 0%, 7%, 0.6);
+  z-index: 500;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+  transition: 0.3s;
+  &.active-calculation-algorithm {
+    opacity: 1;
+    visibility: visible;
+  }
+  &__body {
+    display: grid;
+    grid-template: minmax(800px, auto) / 1fr minmax(auto, 1300px);
+  }
+
+  // .lighting-calculator-popup-calculation-algorithm__container
+
+  &__container {
+    grid-column: 2/3;
+    background-color: #ffffff;
+    transform: translateX(100%);
+    transition: transform 0.5s ease;
+  }
+  &.active-calculation-algorithm &__container {
+    transform: translateX(0);
+  }
+  // .lighting-calculator-popup-calculation-algorithm__content
+
+  &__content {
+    padding: 40px;
+    position: relative;
+  }
+  &__btn {
+    position: absolute;
+    top: 20px;
+    left: -80px;
+    width: 56px;
+    height: 56px;
+    cursor: pointer;
+  }
+  // .lighting-calculator-popup-calculation-algorithm__title
+
+  &__title {
+  }
+
+  // .lighting-calculator-popup-calculation-algorithm__texts
+
+  &__texts {
+    margin-top: 40px;
+    max-width: 820px;
+    @extend %text;
+  }
+
+  // .lighting-calculator-popup-calculation-algorithm__text
+
+  &__text + &__text {
+    margin-top: 20px;
+  }
+}
+// =================================================
+.lighting-calculator-popup-selecting-luminaire {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: hsl(0, 0%, 7%, 0.6);
+  z-index: 500;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+  transition: 0.3s;
+
+  &.active-selecting-luminaire {
+    opacity: 1;
+    visibility: visible;
+  }
+  // .lighting-calculator-popup-selecting-luminaire__body
+
+  &__body {
+    display: grid;
+    grid-template: minmax(800px, auto) / 1fr minmax(auto, 1300px);
+  }
+
+  // .lighting-calculator-popup-selecting-luminaire__container
+
+  &__container {
+    grid-column: 2/3;
+    background-color: #ffffff;
+    transform: translateX(100%);
+    transition: transform 0.5s ease;
+  }
+  &.active-selecting-luminaire &__container {
+    transform: translateX(0);
+  }
+  // .lighting-calculator-popup-selecting-luminaire__content
+
+  &__content {
+    padding: 40px;
+    position: relative;
+  }
+
+  // .lighting-calculator-popup-selecting-luminaire__btn
+
+  &__btn {
+    position: absolute;
+    top: 20px;
+    left: -80px;
+    width: 56px;
+    height: 56px;
+    cursor: pointer;
+  }
+
+  // .lighting-calculator-popup-selecting-luminaire__title
+
+  &__title {
+  }
+
+  // .lighting-calculator-popup-selecting-luminaire__texts
+
+  &__texts {
+    margin-top: 40px;
+    max-width: 820px;
+    @extend %text;
+  }
+}
+.search-selecting-luminaire__card {
+  max-height: calc(100vh - 300px); /* или другая фиксированная высота */
+  overflow-y: auto;
+}
+/* Толщина полоски */
+::-webkit-scrollbar {
+  width: 4px; /* вертикальная */
+  height: 4px; /* горизонтальная */
+}
+
+/* Сам "ползунок" */
+::-webkit-scrollbar-thumb {
+  background: #015dae;
+}
+
+.search-selecting-luminaire {
+  // .search-selecting-luminaire__search
+
+  &__search {
+    display: flex;
+    gap: 20px;
+    padding: 40px 0px;
+  }
+
+  // .search-selecting-luminaire__input
+
+  &__input {
+    width: 100%;
+    padding: 20px 40px;
+    background-color: #f2f7fb;
+  }
+  &__input::placeholder {
+    @extend %text;
+    color: $color;
+    opacity: 0.6;
+  }
+
+  // .search-selecting-luminaire__btn
+
+  &__btn {
+    @extend %text;
+    color: #ffffff;
+    padding: 20px 40px;
+    background-color: $color;
+    cursor: pointer;
+  }
+}
+
+.search-selecting-luminaire__card .products-section__grid {
+  grid-template: auto / repeat(auto-fit, minmax(260px, 1fr));
+  padding-right: 20px;
+}
+.search-selecting-luminaire__card
+  .products-section__grid
+  .products-section-img {
+  width: 205px;
+}
+
+.search-selecting-luminaire__card .products-section__text {
+  font-size: 20px;
+}
+
+// ===================================================================
+
+.lighting-calculator-popup-request-calculation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: hsl(0, 0%, 7%, 0.6);
+  z-index: 500;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+  transition: 0.3s;
+
+  &.active-request-calculation {
+    opacity: 1;
+    visibility: visible;
+  }
+  // .lighting-calculator-popup-request-calculation__body
+
+  &__body {
+    display: grid;
+    grid-template: minmax(800px, auto) / 1fr minmax(auto, 1300px);
+  }
+
+  // .lighting-calculator-popup-request-calculation__container
+
+  &__container {
+    grid-column: 2/3;
+    background-color: #ffffff;
+    transform: translateX(100%);
+    transition: transform 0.5s ease;
+  }
+  &.active-request-calculation &__container {
+    transform: translateX(0);
+  }
+
+  // .lighting-calculator-popup-request-calculation__content
+
+  &__content {
+    padding: 40px;
+    position: relative;
+  }
+
+  // .lighting-calculator-popup-selecting-luminaire__btn
+
+  &__btn {
+    position: absolute;
+    top: 20px;
+    left: -80px;
+    width: 56px;
+    height: 56px;
+    cursor: pointer;
+  }
+
+  // .lighting-calculator-popup-request-calculation__title
+
+  &__title {
+  }
+}
+
+.lighting-calculator-popup-request-calculation {
+  // .lighting-calculator-popup-request-calculation__characteristics
+
+  &__characteristics {
+  }
+}
+.characteristics-popup-request-calculation {
+  // .characteristics-popup-request-calculation__title
+  padding: 40px 0px;
+  &__title {
+    margin-bottom: 40px;
+  }
+
+  // .characteristics-popup-request-calculation__grid
+
+  &__grid {
+    display: grid;
+    grid-template: auto / repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+
+  // .characteristics-popup-request-calculation__card
+
+  &__card {
+  }
+
+  // .characteristics-popup-request-calculation__text-top
+
+  &__text-top {
+    @extend %text;
+    opacity: 0.6;
+    margin-bottom: 20px;
+  }
+
+  // .characteristics-popup-request-calculation__text-bottom
+
+  &__text-bottom {
+    font-size: 32px;
+    font-weight: 500;
+  }
+}
+
+.form-popup-request-calculation {
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+  }
+
+  &__column {
+    flex: 1 1 48%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__label {
+    display: flex;
+    flex-direction: column;
+    @extend %text;
+  }
+
+  &__input,
+  &__select,
+  &__textarea {
+    @extend %text;
+    margin-top: 8px;
+    padding: 20px 40px;
+
+    background-color: $bgcard;
+    color: $color;
+
+    &::placeholder {
+      color: $color;
+    }
+  }
+
+  &__select {
+    appearance: none;
+    background: url("/public/images/icons/second-arrow-down.svg") no-repeat
+      right 10px center;
+    background-size: 24px;
+    background-color: $bgcard;
+    cursor: pointer;
+  }
+
+  &__textarea {
+    min-height: 80px;
+    resize: vertical;
+  }
+
+  &__fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__legend {
+    @extend %text;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  &__radio-group {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 12px;
+  }
+
+  &__radio {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+
+    input[type="radio"] {
+      accent-color: #0066cc;
+    }
+  }
+
+  &__file-upload {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+
+    input[type="file"] {
+      display: none;
+    }
+
+    span {
+      color: #0066cc;
+      text-decoration: underline;
+      font-size: 14px;
+    }
+  }
+
+  &__submit {
+    text-align: center;
+  }
+
+  &__button {
+    @extend %btn;
+    width: 100%;
+  }
+
+  &__agreement {
+    font-size: 12px;
+    color: #555;
+    text-align: center;
+    line-height: 1.4;
+
+    a {
+      // color: #0066cc;
+      // text-decoration: underline;
+    }
+  }
+}
+
+.lighting-calculator-popup-request-calculation__scroll {
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+  padding-right: 20px;
+}
+
+.form-popup-request-calculation {
+  &__real-file,
+  &__fake-file {
+    margin-top: 12px;
+    font-size: 14px;
+  }
+
+  .fake-file-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__file-remove {
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    img {
+      width: 14px;
+      height: 14px;
+    }
+  }
+}

@@ -1,5 +1,12 @@
 import "./scss/style.scss";
 import { Swiper } from "./js/swiper-bundle.min";
+import {
+  lightingParameters,
+  disabledBtn,
+  popupCalculationAlgorithm,
+  popupSelectingLuminaire,
+  popupRequestCalculation,
+} from "./js/lightingParameters";
 
 new Swiper(".my-slide", {
   slidesPerView: 4,
@@ -75,4 +82,100 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   }
+  // ============================================================
+  document
+    .querySelectorAll(".lighting-calculator__control")
+    .forEach((control) => {
+      const input = control.querySelector(".dimension-input");
+      const increment = control.querySelector(".btn-increment");
+      const decrement = control.querySelector(".btn-decrement");
+
+      // Безопасная проверка на наличие всех элементов
+      if (!input || !increment || !decrement) return;
+
+      increment.addEventListener("click", () => {
+        input.value = (
+          parseFloat(input.value) + parseFloat(input.step)
+        ).toFixed(1);
+        updateArea();
+      });
+
+      decrement.addEventListener("click", () => {
+        const newValue = parseFloat(input.value) - parseFloat(input.step);
+        if (newValue >= parseFloat(input.min)) {
+          input.value = newValue.toFixed(1);
+          updateArea();
+        }
+      });
+
+      input.addEventListener("input", updateArea);
+    });
+
+  function updateArea() {
+    const inputs = document.querySelectorAll(".dimension-input");
+    const length = parseFloat(inputs[0]?.value) || 0;
+    const width = parseFloat(inputs[1]?.value) || 0;
+    const area = length * width;
+    const areaEl = document.getElementById("area-value");
+    if (areaEl) areaEl.textContent = Math.round(area);
+  }
+
+  document
+    .querySelectorAll(".lighting-calculator__control")
+    .forEach((control) => {
+      const input = control.querySelector("input.lighting-input");
+      const increment = control.querySelector(".btn-increment");
+      const decrement = control.querySelector(".btn-decrement");
+
+      increment?.addEventListener("click", () => {
+        input.value = (
+          parseFloat(input.value) + parseFloat(input.step)
+        ).toFixed(1);
+      });
+
+      decrement?.addEventListener("click", () => {
+        const newValue = parseFloat(input.value) - parseFloat(input.step);
+        if (newValue >= parseFloat(input.min)) {
+          input.value = newValue.toFixed(1);
+        }
+      });
+    });
+  lightingParameters();
+  disabledBtn();
+  popupCalculationAlgorithm();
+  popupSelectingLuminaire();
+  popupRequestCalculation();
+  const fileInput = document.getElementById("fileInput");
+  const realFileName = document.getElementById("realFileName");
+  const fakeFileName = document.getElementById("fakeFileName");
+  const realFileDisplay = document.getElementById("realFileDisplay");
+  const fakeFileDisplay = document.getElementById("fakeFileDisplay");
+  const removeFakeFileBtn = document.getElementById("removeFakeFile");
+
+  const radioButtons = document.querySelectorAll('input[name="file_type"]');
+
+  radioButtons.forEach((radio) => {
+    radio.addEventListener("change", () => {
+      const value = radio.value;
+      if (value === "real") {
+        realFileDisplay.style.display = "block";
+        fakeFileDisplay.style.display = "none";
+      } else {
+        realFileDisplay.style.display = "none";
+        fakeFileDisplay.style.display = "flex";
+      }
+    });
+  });
+
+  fileInput.addEventListener("change", () => {
+    const file = fileInput.files[0];
+    if (file) {
+      realFileName.textContent = file.name;
+      fakeFileName.textContent = file.name;
+    }
+  });
+
+  removeFakeFileBtn.addEventListener("click", () => {
+    fakeFileName.textContent = "Файл удалён";
+  });
 });

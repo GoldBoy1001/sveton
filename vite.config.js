@@ -15,6 +15,8 @@ export default defineConfig({
         servicesDetail: resolve(__dirname, "services-detail.html"),
         servisy: resolve(__dirname, "servisy.html"),
         lightingCalculator: resolve(__dirname, "lighting-calculator.html"),
+        automaticSwitching: resolve(__dirname, "automatic-switching.html"),
+        individualDesign: resolve(__dirname, "individual-design.html"),
       },
     },
   },

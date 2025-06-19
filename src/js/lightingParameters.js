@@ -105,3 +105,27 @@ export function popupSelectingLuminaire() {
     });
   }
 }
+
+export function popupFilesForm() {
+  const fileInput = document.getElementById("fileInput");
+  const realFileName = document.getElementById("realFileName");
+  const fakeFileName = document.getElementById("fakeFileName");
+  const removeFakeFileBtn = document.getElementById("removeFakeFile");
+
+  const radioButtons = document.querySelectorAll('input[name="file_type"]');
+  if (fileInput) {
+    fileInput.addEventListener("change", () => {
+      const file = fileInput.files[0];
+      if (file) {
+        realFileName.textContent = file.name;
+        fakeFileName.textContent = file.name;
+      }
+    });
+  }
+  if (removeFakeFileBtn) {
+    removeFakeFileBtn.addEventListener("click", () => {
+      fakeFileName.textContent = "Файл удалён";
+      realFileName.textContent = "имя файла";
+    });
+  }
+}

@@ -6,7 +6,12 @@ import {
   popupCalculationAlgorithm,
   popupSelectingLuminaire,
   popupRequestCalculation,
+  popupFilesForm,
 } from "./js/lightingParameters";
+import {
+  popupSelectingLuminaireSwitching,
+  popupCalculationAlgorithmSwitching,
+} from "./js/automaticSswitching";
 
 new Swiper(".my-slide", {
   slidesPerView: 4,
@@ -145,37 +150,7 @@ document.addEventListener("DOMContentLoaded", () => {
   popupCalculationAlgorithm();
   popupSelectingLuminaire();
   popupRequestCalculation();
-  const fileInput = document.getElementById("fileInput");
-  const realFileName = document.getElementById("realFileName");
-  const fakeFileName = document.getElementById("fakeFileName");
-  const realFileDisplay = document.getElementById("realFileDisplay");
-  const fakeFileDisplay = document.getElementById("fakeFileDisplay");
-  const removeFakeFileBtn = document.getElementById("removeFakeFile");
-
-  const radioButtons = document.querySelectorAll('input[name="file_type"]');
-
-  radioButtons.forEach((radio) => {
-    radio.addEventListener("change", () => {
-      const value = radio.value;
-      if (value === "real") {
-        realFileDisplay.style.display = "block";
-        fakeFileDisplay.style.display = "none";
-      } else {
-        realFileDisplay.style.display = "none";
-        fakeFileDisplay.style.display = "flex";
-      }
-    });
-  });
-
-  fileInput.addEventListener("change", () => {
-    const file = fileInput.files[0];
-    if (file) {
-      realFileName.textContent = file.name;
-      fakeFileName.textContent = file.name;
-    }
-  });
-
-  removeFakeFileBtn.addEventListener("click", () => {
-    fakeFileName.textContent = "Файл удалён";
-  });
+  popupFilesForm();
+  popupSelectingLuminaireSwitching();
+  popupCalculationAlgorithmSwitching();
 });

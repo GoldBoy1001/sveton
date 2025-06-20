@@ -17,6 +17,8 @@ export default defineConfig({
         lightingCalculator: resolve(__dirname, "lighting-calculator.html"),
         automaticSwitching: resolve(__dirname, "automatic-switching.html"),
         individualDesign: resolve(__dirname, "individual-design.html"),
+        portfolio: resolve(__dirname, "portfolio.html"),
+        portfolioDetail: resolve(__dirname, "portfolio-detail.html"),
       },
     },
   },

@@ -12,6 +12,7 @@ import {
   popupSelectingLuminaireSwitching,
   popupCalculationAlgorithmSwitching,
 } from "./js/automaticSswitching";
+import { portfolioTabs } from "./js/portfolio";
 
 new Swiper(".my-slide", {
   slidesPerView: 4,
@@ -68,6 +69,36 @@ new Swiper(".portfolio-slides", {
   navigation: {
     nextEl: ".portfolio-slide__prev",
     prevEl: ".portfolio-slide__next",
+  },
+  // pagination: {
+  //   el: ".swiper-pagination",
+  //   dynamicBullets: true,
+  // },
+});
+new Swiper(".portfolio-detail-slides", {
+  slidesPerView: 1,
+  // spaceBetween: 30,
+  loop: true,
+  // breakpoints: {
+  //   320: {
+  //     slidesPerView: 1,
+  //     spaceBetween: 20,
+  //   },
+  //   // когда ширина экрана меньше 768 пикселей
+  //   560: {
+  //     slidesPerView: 2,
+  //     spaceBetween: 20,
+  //   },
+  //   // когда ширина экрана меньше 1024 пикселей
+  //   992: {
+  //     slidesPerView: 3,
+  //     spaceBetween: 30,
+  //   },
+  //   // и так далее
+  // },
+  navigation: {
+    nextEl: ".portfolio-detail-slide__prev",
+    prevEl: ".portfolio-detail-slide__next",
   },
   // pagination: {
   //   el: ".swiper-pagination",
@@ -153,4 +184,5 @@ document.addEventListener("DOMContentLoaded", () => {
   popupFilesForm();
   popupSelectingLuminaireSwitching();
   popupCalculationAlgorithmSwitching();
+  portfolioTabs();
 });

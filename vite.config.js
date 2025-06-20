@@ -19,6 +19,8 @@ export default defineConfig({
         individualDesign: resolve(__dirname, "individual-design.html"),
         portfolio: resolve(__dirname, "portfolio.html"),
         portfolioDetail: resolve(__dirname, "portfolio-detail.html"),
+        distributor: resolve(__dirname, "distributor.html"),
+        decorativeLighting: resolve(__dirname, "decorative-lighting.html"),
       },
     },
   },

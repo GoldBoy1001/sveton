@@ -3152,3 +3152,94 @@
   border-width: 2px 2px 0px 0px;
   transform: rotate(135deg);
 }
+
+// =====================     sarch       ==========================================
+
+.sarch {
+  // .sarch__body
+  @extend %grid;
+  &__body {
+    grid-column: 2/3;
+  }
+
+  // .sarch__title
+
+  &__title {
+  }
+
+  // .sarch__block
+
+  &__block {
+    max-width: 1084px;
+  }
+
+  // .sarch__block-input
+
+  &__block-input {
+  }
+
+  // .sarch__block-btn
+
+  &__block-btn {
+  }
+}
+.search-selecting-luminaire {
+  // .search-selecting-luminaire__search
+
+  &__search {
+  }
+
+  // .search-selecting-luminaire__input
+
+  &__input {
+  }
+
+  // .search-selecting-luminaire__btn
+
+  &__btn {
+  }
+}
+
+// ===========================   favorites       ====================================
+
+.favorites {
+  // .favorites__body
+  @extend %grid;
+  &__body {
+    grid-column: 2/3;
+  }
+
+  // .favorites__title
+
+  &__title {
+  }
+
+  // .favorites__content
+
+  &__content {
+  }
+}
+.content-favorites {
+  // .content-favorites__none
+
+  &__none {
+  }
+
+  // .content-favorites__none-text
+
+  &__none-text {
+  }
+
+  // .content-favorites__none-btn
+
+  &__none-btn {
+    display: inline-block;
+    @extend %btn;
+    font-size: 20px;
+  }
+
+  // .content-favorites__products
+
+  &__products {
+  }
+}

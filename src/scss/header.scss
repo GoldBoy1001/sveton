@@ -59,3 +59,12 @@
     cursor: pointer;
   }
 }
+.menu-top__icons-favorites,
+.menu-top__icons-search {
+  color: #111111;
+  transition: color 0.3s ease;
+}
+.menu-top__icons-favorites:hover,
+.menu-top__icons-search:hover {
+  color: $color;
+}

@@ -23,6 +23,8 @@ export default defineConfig({
         decorativeLighting: resolve(__dirname, "decorative-lighting.html"),
         contacts: resolve(__dirname, "contacts.html"),
         favorites: resolve(__dirname, "favorites.html"),
+        search: resolve(__dirname, "search.html"),
+        about: resolve(__dirname, "about.html"),
       },
     },
   },

@@ -3243,3 +3243,162 @@
   &__products {
   }
 }
+
+// ===============================       about-index       =============================================
+
+.about-index {
+  // .about-index__body
+  @extend %grid;
+  &__body {
+    grid-column: 2/3;
+  }
+
+  // .about-index__title
+
+  &__title {
+  }
+
+  // .about-index__content
+
+  &__content {
+  }
+}
+.content-about {
+  // .content-about__body
+
+  &__body {
+    max-width: 1090px;
+    margin-left: auto;
+    margin-top: 20px;
+  }
+
+  // .content-about__text
+
+  &__text {
+    font-size: 24px;
+  }
+  &__text + &__text {
+    margin-top: 20px;
+  }
+
+  // .content-about__supervisor
+
+  &__supervisor {
+    margin-top: 20px;
+    max-width: 290px;
+  }
+
+  // .content-about__supervisor-img
+
+  &__supervisor-img {
+    width: 100%;
+    height: 100%;
+  }
+
+  // .content-about__supervisor-name
+
+  &__supervisor-name {
+    margin-top: 20px;
+  }
+
+  // .content-about__supervisor-text
+
+  &__supervisor-text {
+    margin-top: 20px;
+    color: #000000;
+    opacity: 0.8;
+  }
+}
+.content-about-index {
+  // .content-about-index__tile
+
+  &__tile {
+    span {
+      display: block;
+      max-width: 1090px;
+      margin-left: auto;
+    }
+  }
+}
+.our-clients {
+  // .our-clients__title
+
+  &__title {
+  }
+
+  // .our-clients__cards
+
+  &__cards {
+  }
+
+  // .our-clients__card
+
+  &__card {
+  }
+
+  // .our-clients__img
+
+  &__img {
+  }
+}
+.about-index-our-clients {
+  // .about-index-our-clients__title
+
+  &__title {
+    margin: auto;
+    transform: translate(0%, 0);
+    max-width: 1870px;
+    width: 100%;
+  }
+}
+.about-reviews {
+  // .about-reviews__title
+  @extend %grid;
+  &__title {
+    grid-column: 2/3;
+    grid-row: 1/2;
+  }
+
+  // .about-reviews__cards
+
+  &__cards {
+    margin-top: 40px;
+    grid-column: 2/3;
+    grid-row: 2/3;
+  }
+}
+.cards-about-reviews {
+  // .cards-about-reviews__card
+
+  &__card {
+    display: flex;
+    align-items: center;
+    column-gap: 20px;
+    cursor: pointer;
+  }
+  &__card + &__card {
+    margin-top: 20px;
+  }
+  // .cards-about-reviews__img
+
+  &__img {
+  }
+
+  // .cards-about-reviews__texts
+
+  &__texts {
+  }
+
+  // .cards-about-reviews__texts-top
+
+  &__texts-top {
+  }
+
+  // .cards-about-reviews__texts-size
+
+  &__texts-size {
+    display: inline-block;
+    opacity: 0.6;
+    margin-top: 10px;
+  }
+}

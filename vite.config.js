@@ -21,6 +21,7 @@ export default defineConfig({
         portfolioDetail: resolve(__dirname, "portfolio-detail.html"),
         distributor: resolve(__dirname, "distributor.html"),
         decorativeLighting: resolve(__dirname, "decorative-lighting.html"),
+        contacts: resolve(__dirname, "contacts.html"),
       },
     },
   },

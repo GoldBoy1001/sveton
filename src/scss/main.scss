@@ -3044,3 +3044,111 @@
     @extend %btn;
   }
 }
+
+// ======================      contacts       ====================================
+
+.contacts {
+  // .contacts__body
+  @extend %grid;
+  &__body {
+    grid-column: 2/3;
+  }
+
+  // .contacts__title
+
+  &__title {
+  }
+
+  // .contacts__content
+
+  &__content {
+  }
+}
+.content-contacts {
+  // .content-contacts__map
+  padding-top: 20px;
+  display: flex;
+  column-gap: 20px;
+
+  &__map {
+  }
+
+  // .content-contacts__addresses
+
+  &__addresses {
+  }
+}
+.contacts-addresses {
+  // .contacts-addresses__card
+
+  &__card {
+    display: flex;
+    column-gap: 10px;
+  }
+
+  &__card + &__card {
+    margin-top: 40px;
+  }
+  // .contacts-addresses__img
+
+  &__img {
+    align-self: start;
+    width: 35px;
+    height: 35px;
+  }
+
+  // .contacts-addresses__address
+
+  &__address {
+  }
+
+  // .contacts-addresses__address-top
+
+  &__address-top {
+  }
+
+  // .contacts-addresses__address-bottom
+
+  &__address-bottom {
+    margin-top: 20px;
+    @extend %text;
+    // .contacts-addresses__address-bottom_tel
+
+    &_tel {
+    }
+  }
+}
+
+.contact-form__checkbox {
+  appearance: none; /* убрать дефолтный стиль браузера */
+  width: 24px;
+  height: 24px;
+  border: 2px solid $color;
+  background-color: #ffffff;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+/* При наведении — рамка */
+.contact-form__checkbox:hover {
+  background-color: hsl(208, 99%, 34%);
+}
+
+/* При checked — фон и галочка */
+.contact-form__checkbox:checked {
+  background-color: $color; /* фон галочки */
+}
+
+/* Добавим кастомную "галочку" с помощью псевдоэлемента */
+.contact-form__checkbox:checked::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 4px;
+  width: 10px;
+  height: 6px;
+  border: solid white;
+  border-width: 2px 2px 0px 0px;
+  transform: rotate(135deg);
+}

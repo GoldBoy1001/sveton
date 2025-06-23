@@ -15,13 +15,13 @@
 						<ul class="menu-top__list">
 							<li class="menu-top__item"><a class=" menu-top__item-link" href="/sveton/">Главная</a></li>
 							<li class="menu-top__item"><a class="menu-top__item-link" href="/sveton/catalog.html">Каталог</a></li>
-							<li class="menu-top__item"><a class="menu-top__item-link active-menu-item" href="/sveton/services.html">Услуги</a></li>
+							<li class="menu-top__item"><a class="menu-top__item-link " href="/sveton/services.html">Услуги</a></li>
 							<li class="menu-top__item"><a class="menu-top__item-link" href="/sveton/servisy.html">Сервисы</a></li>
 							<li class="menu-top__item"><a class="menu-top__item-link" href="/sveton/portfolio.html">Портфолио</a></li>
-							<li class="menu-top__item"><a class="menu-top__item-link" href="/sveton/distributor.html">Дистрибьютеры</a> </li>
-							<li class="menu-top__item"><a class="menu-top__item-link" href="/sveton/decorative-lighting.html">Декоративное освещение</a></li>
+							<li class="menu-top__item"><a class="menu-top__item-link " href="/sveton/distributor.html">Дистрибьютеры</a> </li>
+							<li class="menu-top__item"><a class="menu-top__item-link " href="/sveton/decorative-lighting.html">Декоративное освещение</a></li>
 							<li class="menu-top__item"><a class="menu-top__item-link" href="/sveton/">О компании</a></li>
-							<li class="menu-top__item"><a class="menu-top__item-link" href="/sveton/contacts.html">Контакты</a></li>
+							<li class="menu-top__item"><a class="menu-top__item-link active-menu-item" href="/sveton/contacts.html">Контакты</a></li>
 						</ul>
 						<div class="menu-top__icons">
 							<img src="./public/images/icons/search.svg" alt="search">
@@ -31,20 +31,87 @@
 				</div>
 			</header>
 			<main class="main">
-				<section class="services">
-					<div class="services__body">
-						<h1 >Услуги</h1>
-						<div class="services__cards cards-services">
-							<a href="/sveton/services-detail.html" class="cards-services__card">
-								<img src="./public/images/big-img/Rectangle 28.jpg" alt="" class="cards-services__img">
-								<p class="cards-services__text">Декоративное освещение</p>
-							</a>
-							<a href="/sveton/services-detail.html" class="cards-services__card">
-								<img src="./public/images/big-img/Rectangle 29.jpg" alt="" class="cards-services__img">
-								<p class="cards-services__text">Проектные работы</p>
-							</a>
+				<section class="contacts">
+					<div class="contacts__body">
+						<h1 class="contacts__title">Контакты</h1>
+						<div class="contacts__content content-contacts">
+							<div class="content-contacts__map">
+								<script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Afe40cce654f2f0fb78fff54e1b74b48382d5472e4b44cbda2ad586f38947c45a&amp;width=700&amp;height=700&amp;lang=ru_RU&amp;scroll=true"></script>
+							</div>
+							<div class="content-contacts__addresses contacts-addresses">
+								<div class="contacts-addresses__card">
+									<img class="contacts-addresses__img" src="./public/images/icons/location.svg" alt="location">
+									<div class="contacts-addresses__address">
+										<h3 class="contacts-addresses__address-top">Адрес</h3>
+										<p class="contacts-addresses__address-bottom">194044, г. Санкт-Петербург, пр. Б. Сампсониевский, д. 60, лит. И</p>
+									</div>
+									
+								</div>
+								<div class="contacts-addresses__card">
+									<img class="contacts-addresses__img" src="./public/images/icons/clock.png" alt="location">
+									<div class="contacts-addresses__address">
+										<h3 class="contacts-addresses__address-top">Часы работы</h3>
+										<p class="contacts-addresses__address-bottom">ПН-ПТ: c 9:00 до 17:00</p>
+									</div>
+									
+								</div>
+								<div class="contacts-addresses__card">
+									<img class="contacts-addresses__img" src="./public/images/icons/call.svg" alt="location">
+									<div class="contacts-addresses__address">
+										<h3 class="contacts-addresses__address-top">(495) 822-02-60</h3>
+										<p class="contacts-addresses__address-bottom contacts-addresses__address-bottom_tel">(812) 325-70-45</p>
+									</div>
+									
+								</div>
+								<div class="contacts-addresses__card">
+									<img class="contacts-addresses__img" src="./public/images/icons/sms.png" alt="location">
+									<div class="contacts-addresses__address">
+										<h3 class="contacts-addresses__address-top">info@sveton.ru</h3>
+									</div>
+									
+								</div>
+								
+							</div>
+							
 						</div>
+						
 					</div>
+				</section>
+				<section class="feedback-form">
+					<div class="feedback-form-body">
+					<form class="contact-form" action="#" method="post">
+  <div class="contact-form__grid">
+    <div class="contact-form__group name-group">
+      <label for="name" class="contact-form__label">Контактное лицо*</label>
+      <input type="text" id="name" name="name" class="contact-form__input" placeholder="Рекомендуем указывать ФИО полностью" required>
+    </div>
+
+    <div class="contact-form__group group-organization">
+      <label for="organization" class="contact-form__label">Организация</label>
+      <input type="text" id="organization" name="organization" class="contact-form__input" placeholder="ООО «ЮРИЦО»">
+    </div>
+
+    <div class="contact-form__group group-phone">
+      <label for="phone" class="contact-form__label">Телефон*</label>
+      <input type="tel" id="phone" name="phone" class="contact-form__input" placeholder="+7-(987)-654-32-10" required>
+    </div>
+
+    <div class="contact-form__group contact-form__group--wide">
+      <label for="message" class="contact-form__label">Комментарий*</label>
+      <textarea id="message" name="message" class="contact-form__textarea" placeholder="Ваше сообщение" required></textarea>
+    </div>
+  </div>
+
+  <div class="contact-form__footer">
+    <button type="submit" class="contact-form__submit">Отправить</button>
+
+    <label class="contact-form__consent">
+      <input type="checkbox" required class="contact-form__checkbox" checked>
+      <span>Даю согласие на обработку персональных данных в соответствии с условиями <a href="#">Политики обработки персональных данных</a></span>
+    </label>
+  </div>
+</form>
+          </div>
 				</section>
 			</main>
 			<footer class="footer">

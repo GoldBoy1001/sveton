@@ -53,6 +53,24 @@
   .products-section__grid {
     grid-template: auto / repeat(auto-fit, minmax(330px, 1fr));
   }
+  .content-services-detail__right {
+    grid-column: 9/19;
+    grid-row: 1/2;
+  }
+  .content-services-detail__img-top {
+    grid-column: 1/9;
+    grid-row: 1/2;
+  }
+
+  .content-services-detail__text-bottom {
+    grid-column: 1/10;
+    grid-row: 2/3;
+  }
+  .content-services-detail__img-bottom {
+    grid-column: 12/19;
+    grid-row: 2/3;
+    max-width: 100%;
+  }
 }
 @media (max-width: 1319.98px) {
   .menu-top {
@@ -351,6 +369,27 @@
   .products-section__grid {
     grid-template: auto / repeat(auto-fit, minmax(300px, 1fr));
   }
+  .cards-services__text {
+    max-width: 450px;
+  }
+  .content-services-detail__right {
+  }
+  .content-services-detail__img-top {
+    height: clamp(14rem, 0.5rem + 60vw, 50rem);
+  }
+
+  .content-services-detail__text-bottom {
+    padding-right: 0px;
+    max-width: 100%;
+  }
+  .content-services-detail__img-bottom {
+    height: clamp(14rem, 0.5rem + 60vw, 50rem);
+    width: 100%;
+  }
+  .content-services-detail__grid {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 @media (max-width: 991.98px) {
@@ -470,6 +509,14 @@
   .products-section__grid {
     grid-template: auto / repeat(auto-fit, minmax(280px, 1fr));
   }
+  .products-section__head {
+    flex-direction: column;
+    align-items: start;
+    gap: 0px;
+  }
+  .products-section__quantity {
+    margin-bottom: 40px;
+  }
 }
 @media (max-width: 639.98px) {
   .content-about__card {
@@ -512,6 +559,14 @@
   }
   .products-section__grid {
     grid-template: auto / repeat(auto-fit, minmax(200px, 1fr));
+  }
+  .card-servisy {
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+  }
+  .card-servisy__title {
+    margin-top: 40px;
   }
 }
 @media (max-width: 540px) {
@@ -583,5 +638,11 @@
   .products-section__grid {
     grid-template: auto / repeat(auto-fit, minmax(160px, 1fr));
     column-gap: 10px;
+  }
+  .cards-services__text {
+    max-width: 300px;
+  }
+  .servisy__cards {
+    grid-template: auto / repeat(auto-fit, minmax(300px, 1fr));
   }
 }

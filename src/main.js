@@ -13,6 +13,26 @@ import {
   popupCalculationAlgorithmSwitching,
 } from "./js/automaticSswitching";
 import { portfolioTabs } from "./js/portfolio";
+const thumbsSwiper = new Swiper(".left-catalog-element__thumbs", {
+  direction: window.innerWidth >= 992 ? "vertical" : "horizontal",
+  slidesPerView: "auto",
+  spaceBetween: 10,
+  watchSlidesProgress: true,
+  watchOverflow: true,
+});
+
+const mainSwiper = new Swiper(".left-catalog-element__main", {
+  slidesPerView: 1,
+  spaceBetween: 10,
+  watchOverflow: true,
+  thumbs: {
+    swiper: thumbsSwiper,
+  },
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+  },
+});
 
 new Swiper(".my-slide", {
   slidesPerView: 4,

@@ -270,7 +270,7 @@
     width: 100%;
     min-height: 53px;
     cursor: pointer;
-    max-width: 532px;
+
     padding: 20px;
   }
 }
@@ -1022,22 +1022,22 @@
     row-gap: 40px;
     position: relative;
   }
-
-  &__title {
+  &__head {
     grid-column: 2/3;
     grid-row: 1/2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
+  }
+  &__title {
+    font-size: clamp(2rem, 1.0464rem + 4.2384vw, 6rem);
   }
   &__quantity {
-    font-size: 32px;
+    font-size: clamp(1.25rem, 1.0712rem + 0.7947vw, 2rem);
     color: #111111;
     opacity: 0.6;
-    position: absolute;
-    top: -20px;
-    right: 20px;
-    width: 180px;
-    height: 40px;
-    z-index: 100;
-    transform: translate(12%, -100%);
   }
   &__body {
     @extend %card;
@@ -1099,13 +1099,13 @@
   // .catalog-element__left
 
   &__left {
-    flex: 0 0 36%;
+    flex: 1 1 36%;
   }
 
   // .catalog-element__right
 
   &__right {
-    flex: 0 0 59%;
+    flex: 1 1 59%;
   }
 
   // .catalog-element__table
@@ -1134,6 +1134,7 @@
     margin-bottom: 20px;
     font-weight: bold;
     letter-spacing: 0;
+    font-size: clamp(2rem, 1.0464rem + 4.2384vw, 6rem);
   }
 
   // .right-catalog-element__favorites
@@ -1377,13 +1378,13 @@
   // .services-detail__content
 
   &__content {
-    font-size: 24px;
+    font-size: clamp(1rem, 0.8808rem + 0.5298vw, 1.5rem);
   }
 
   // .services-detail__text-top
 
   &__text-top {
-    padding-right: 190px;
+    padding-right: clamp(0rem, -39.7674rem + 44.186vw, 11.875rem);
   }
   &__text-top + &__text-top {
     margin-top: 20px;
@@ -1408,14 +1409,15 @@
     }
   }
 }
+
 .content-services-detail {
   // .content-services-detail__title
   &__title {
-    max-width: 1575px;
+    max-width: 1685px;
     span {
       display: block;
-      text-align: end;
-      transform: translate(-15%, 0);
+      max-width: clamp(53.75rem, 33.8663rem + 22.093vw, 59.6875rem);
+      margin-left: auto;
     }
   }
 
@@ -1487,7 +1489,7 @@
 
   &__cards {
     display: grid;
-    grid-template: minmax(445px, auto) / repeat(auto-fit, minmax(400px, 1fr));
+    grid-template: auto / repeat(auto-fit, minmax(400px, 1fr));
     gap: 20px;
   }
 
@@ -1499,9 +1501,11 @@
 .card-servisy {
   // .card-servisy__img
   background-color: $bgcard;
+  min-height: clamp(14rem, 11.2881rem + 12.053vw, 25.375rem);
   padding: 20px;
   display: grid;
   grid-template: 1fr minmax(49px, auto) minmax(58px, auto) / 1fr;
+
   @media (hover: hover) {
     &:hover {
       color: $color;
@@ -1515,6 +1519,8 @@
   }
 
   &__img {
+    width: clamp(4rem, 3.0464rem + 4.2384vw, 8rem);
+    height: clamp(4rem, 3.0464rem + 4.2384vw, 8rem);
   }
 
   // .card-servisy__title
@@ -1528,7 +1534,7 @@
   // .card-servisy__text
 
   &__text {
-    font-size: 20px;
+    font-size: clamp(0.875rem, 0.7856rem + 0.3974vw, 1.25rem);
     margin-top: 20px;
     span {
       display: block;
@@ -1551,7 +1557,7 @@
   &__note {
     display: flex;
     align-items: center;
-    font-size: 20px;
+    font-size: clamp(1rem, 0.9404rem + 0.2649vw, 1.25rem);
     font-weight: 500;
     gap: 10px;
     margin-bottom: 60px;
@@ -1631,11 +1637,11 @@
   }
 
   &__area-value {
-    font-size: 96px;
+    font-size: clamp(4rem, 3.5232rem + 2.1192vw, 6rem);
     font-weight: 700;
 
     span {
-      font-size: 96px;
+      font-size: clamp(4rem, 3.5232rem + 2.1192vw, 6rem);
       margin-left: 4px;
       font-weight: 700;
     }
@@ -1709,10 +1715,11 @@
         color: #fff;
         border-color: $color;
       }
-
-      &:hover {
-        background-color: $color;
-        color: #ffffff;
+      @media (hover: hover) {
+        &:hover {
+          background-color: $color;
+          color: #ffffff;
+        }
       }
     }
   }
@@ -1740,7 +1747,7 @@
     background: transparent;
     font-weight: 500;
     outline: none;
-    font-size: 32px;
+    font-size: clamp(1.25rem, 1.0712rem + 0.7947vw, 2rem);
 
     // Убираем стрелки у input type="number"
     -moz-appearance: textfield;
@@ -1754,7 +1761,7 @@
   }
 
   .dimension-unit {
-    font-size: 32px;
+    font-size: clamp(1.25rem, 1.0712rem + 0.7947vw, 2rem);
   }
 
   .btn-decrement,
@@ -1847,7 +1854,7 @@
     width: 80px;
     padding: 6px;
     text-align: center;
-    font-size: 32px;
+    font-size: clamp(1.5rem, 1.3808rem + 0.5298vw, 2rem);
     font-weight: 500;
     /* 🔽 Удаляем стандартные стрелки */
     -moz-appearance: textfield;
@@ -1861,7 +1868,7 @@
   }
 
   .unit {
-    font-size: 32px;
+    font-size: clamp(1.5rem, 1.3808rem + 0.5298vw, 2rem);
     font-weight: 500;
     font-style: normal;
     margin-bottom: 0px;

@@ -1,6 +1,7 @@
 @import "normalize.css";
 @import "../../public/fonts/fonts.scss";
 @import "./slider/swiper-bundle.min.css";
+
 // @import "variable.scss";
 ul li {
   list-style: none;
@@ -11,7 +12,7 @@ ul li {
   border: 0;
 }
 h1 {
-  font-size: 96px;
+  font-size: clamp(2rem, 2.3427rem + -1.5232vw, 0.5625rem);
   font-weight: 700;
   margin: 40px 0px;
   padding: 0px;
@@ -20,13 +21,13 @@ h2 {
   font-weight: 500;
   font-style: normal;
   color: #111111;
-  font-size: 48px;
+  font-size: clamp(1.5rem, 1.1424rem + 1.5894vw, 3rem);
 }
 h3 {
   font-weight: 500;
   font-style: normal;
   color: #111111;
-  font-size: 32px;
+  font-size: clamp(1.25rem, 1.0712rem + 0.7947vw, 2rem);
 }
 a {
   text-decoration: none;
@@ -131,3 +132,13 @@ body.popup-open {
 @import "main.scss";
 
 @import "footer.scss";
+@import "./adaptiv.scss";
+
+@media (max-width: 1440px) {
+}
+@media (max-width: 991.98px) {
+}
+@media (max-width: 768px) {
+}
+@media (max-width: 360px) {
+}

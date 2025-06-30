@@ -36,13 +36,43 @@
 								</svg>
 
 							</a>
+							<!-- Кнопка-бургер -->
+								<button class="burger" aria-label="Открыть меню">
+								  <span></span>
+								  <span></span>
+								  <span></span>
+								</button>
+
+								<!-- Мобильное меню (список копируем из .menu-top__list) -->
+								<nav class="mobile-menu">
+									<div class="mobile-menu-body">
+								  <ul class="mobile-menu__list">
+								    <li><a href="/sveton/">Главная</a></li>
+								    <li><a href="/sveton/catalog.html">Каталог</a></li>
+								    <li><a href="/sveton/services.html">Услуги</a></li>
+								    <li><a href="/sveton/servisy.html">Сервисы</a></li>
+								    <li><a href="/sveton/portfolio.html">Портфолио</a></li>
+								    <li><a href="/sveton/distributor.html">Дистрибьютеры</a></li>
+								    <li><a href="/sveton/decorative-lighting.html">Декоративное освещение</a></li>
+								    <li><a href="/sveton/about.html">О компании</a></li>
+								    <li><a href="/sveton/contacts.html">Контакты</a></li>
+								  </ul>
+									</div>
+								</nav>
+
+
 						</div>
 					 </nav>
 				</div>
 			</header>
 			<main class="main">
-				<section class="banner">
-					<img src="/public/images/big-img/Rectangle 1.jpg" alt="banner" class="banner__img">
+				<section class="banner"> 
+					<picture>
+  					<source class="banner__img" srcset="/public/images/min-img/Rectangle.jpg" media="(max-width: 539px)">
+  					<img src="/public/images/big-img/Rectangle 1.jpg" alt="banner" class="banner__img">
+					</picture>
+
+					
 					 
 					<div class="banner__content">
 						<div class="banner__content-logo">
@@ -51,7 +81,7 @@
 						<h1 class="banner__content-title">Инновационные решения
 							для современного освещения</h1>
 					</div>
-				</section>
+				</section> 
 				<section class="products">
 				
 					<div class="swiper my-slide">
@@ -124,32 +154,32 @@
 						<div class="swiper-button-prev"></div>
 						<div class="swiper-button-next"></div> -->
 						
-					 </div>
-				</section>
-				<section class="about">
+					 </div> 
+				 </section>
+				 <section class="about">  
 					<div class="about__body">
 						<h2 class="about__title"><span>СВЕТОН — это профессиональные</span> <br> осветительные приборы, собираемые <br> в Санкт-Петербурге из российских <br> компонентов</h2>
 						<div class="about__content content-about">
 							<div class="content-about__card">
 								<p class="content-about__num">120К +</p>
-								<p class="content-about__text">Изделий в год выпускаем</p>
+								<p class="content-about__text">Изделий <br class="br-text"> в год выпускаем</p>
 							</div>
 							<div class="content-about__card">
 								<p class="content-about__num">10К м²</p>
-								<p class="content-about__text">Площадь собственного производства и складов</p>
+								<p class="content-about__text">Площадь собственного <br> производства и складов</p>
 							</div>
 							<div class="content-about__card">
 								<p class="content-about__num">300 +</p>
-								<p class="content-about__text">Сотрудников работает в Группе Компаний</p>
+								<p class="content-about__text">Сотрудников работает <br> в Группе Компаний</p>
 							</div>
 							<div class="content-about__card">
 								<p class="content-about__num">15 лет</p>
-								<p class="content-about__text">Работаем и развиваем рынок</p>
+								<p class="content-about__text">Работаем <br> и развиваем рынок</p>
 							</div>
 						</div>
 					</div>
-				</section>
-				<section class="services">
+				</section> 
+				 <section class="services"> 
 					<div class="services__body">
 						<h2 class="services__title">Инновационные световые решения для ваших проектов</h2>
 						<div class="services__cards cards-services">
@@ -163,12 +193,13 @@
 							</div>
 						</div>
 					</div>
-				</section>
+				</section> 
 				<section class="portfolio">
 					<div class="portfolio__more more-portfolio">
 					<a href="#" class="more-portfolio__link">Больше наших проектов <img src="./public/images/icons/arrow-link.svg" alt=""></a></div>
+					
 					<div class="portfolio__body">
-						<div class="portfolio__projects projects-portfolio">
+						<div class="portfolio__projects projects-portfolio projects-portfolio-desctop">
 							<div class="projects-portfolio__card portfolio__card-active">
 								<h3 class="projects-portfolio__title">Название проекта</h3>
 								<p class="projects-portfolio__text">Место, год</p>
@@ -190,6 +221,20 @@
 								<p class="projects-portfolio__text">Место, год</p>
 							</div>
 						</div>
+						
+								<!-- Новый блок-слайдер для mobile -->
+						<div class="projects-portfolio-mobile swiper">
+						  <div class="swiper-wrapper projects-portfolio-mobile-wrapper">
+						    <div class="swiper-slide projects-portfolio-mobile-slide projects-portfolio-mobile-slide-active"><span>Название проекта</span></div>
+						    <div class="swiper-slide projects-portfolio-mobile-slide"><span>Название проекта</span></div>
+						    <div class="swiper-slide projects-portfolio-mobile-slide"><span>Название проекта</span></div>
+						    <div class="swiper-slide projects-portfolio-mobile-slide"><span>Название проекта</span></div>
+						    <div class="swiper-slide projects-portfolio-mobile-slide"><span>Название проекта</span></div>
+						  </div>
+						  
+							 <div class="swiper-scrollbar"></div>
+						</div>
+
 						<div class="portfolio__slider">
 							<div class="swiper portfolio-slides">
 								<div class="swiper-wrapper portfolio-slide-wrapper">
@@ -252,8 +297,8 @@
 							 </div>
 						</div>
 					</div>
-				</section>
-				<section class="why-choose-us">
+				</section> 
+				<section class="why-choose-us"> 
 					<div class="why-choose-us__cards">
 						<div class="why-choose-us__card card-why-choose-us card-why-choose-us__area1">
 							<h3 class="card-why-choose-us__title">Высокое качество</h3>
@@ -276,8 +321,8 @@
 							<p class="card-why-choose-us__text">Разветвлённая сеть дистрибьюции и гибкая маркетинговая политика делают продукцию «СВЕТОН» доступной каждому потребителю. Для нас нет второстепенных клиентов!</p>
 						</div>
 					</div>
-				</section>
-				<section class="our-clients">
+				</section> 
+				<section class="our-clients"> 
 					<h2 class="our-clients__title">Нам доверяют более 1000 компаний</h2>
 					<div class="our-clients__cards">
 						<div class="our-clients__card">
@@ -318,7 +363,7 @@
 						</div>
 					</div>
 				</section>
-				<section class="how-to-order">
+				<section class="how-to-order"> 
 					<h2 class="how-to-order__title">Осветить мир вокруг просто</h2>
 					<div class="how-to-order__cards">
 						<div class="how-to-order__card card-to-order">
@@ -338,8 +383,8 @@
 							<p class="card-to-order__text">В течении 2–14 дней оборудование у нас на складе и готов к отгрузке с полным пакетом документов</p>
 						</div>
 					</div>
-				</section>
-				<section class="feedback-form">
+				</section> 
+				<section class="feedback-form"> 
 					<div class="feedback-form-body">
 					<form class="contact-form" action="#" method="post">
   <div class="contact-form__grid">
@@ -395,12 +440,12 @@
     <div class="footer__column footer__column--menu">
       <nav class="footer__nav">
         <ul class="footer__list">
-          <li class="footer__item"><a href="#" class="footer__link">Каталог</a></li>
-          <li class="footer__item"><a href="#" class="footer__link">Сервисы</a></li>
-          <li class="footer__item"><a href="#" class="footer__link">Портфолио</a></li>
-          <li class="footer__item"><a href="#" class="footer__link">Дистрибьюторы</a></li>
-          <li class="footer__item"><a href="#" class="footer__link">Декоративное освещение</a></li>
-          <li class="footer__item"><a href="#" class="footer__link">О компании</a></li>
+          <li class="footer__item"><a href="#" class="footer__link fcat">Каталог</a></li>
+          <li class="footer__item"><a href="#" class="footer__link fser">Сервисы</a></li>
+          <li class="footer__item"><a href="#" class="footer__link fport">Портфолио</a></li>
+          <li class="footer__item"><a href="#" class="footer__link fdist">Дистрибьюторы</a></li>
+          <li class="footer__item"><a href="#" class="footer__link fdecor">Декоративное освещение</a></li>
+          <li class="footer__item"><a href="#" class="footer__link fabout">О компании</a></li>
         </ul>
       </nav>
     </div>

@@ -13,6 +13,8 @@ import {
   popupCalculationAlgorithmSwitching,
 } from "./js/automaticSswitching";
 import { portfolioTabs } from "./js/portfolio";
+import customSeletArrow from "./js/customSeletArrow";
+
 const thumbsSwiper = new Swiper(".left-catalog-element__thumbs", {
   direction: window.innerWidth >= 992 ? "vertical" : "horizontal",
   slidesPerView: "auto",
@@ -154,8 +156,6 @@ swperPortfolio.on("slideChange", () => {
 
 new Swiper(".portfolio-detail-slides", {
   slidesPerView: 1,
-  // spaceBetween: 30,
-  loop: true,
   // breakpoints: {
   //   320: {
   //     slidesPerView: 1,
@@ -177,10 +177,11 @@ new Swiper(".portfolio-detail-slides", {
     nextEl: ".portfolio-detail-slide__prev",
     prevEl: ".portfolio-detail-slide__next",
   },
-  // pagination: {
-  //   el: ".swiper-pagination",
-  //   dynamicBullets: true,
-  // },
+  pagination: {
+    el: ".portfolio-detail-pagination",
+    dynamicBullets: true,
+    clickable: true,
+  },
 });
 document.addEventListener("DOMContentLoaded", () => {
   const menuItems = document.querySelectorAll(".menu-top__item-link");
@@ -190,10 +191,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const menuLinks = document.querySelectorAll(".mobile-menu__list a");
 
   if (menuItems) {
-    menuItems.forEach((item) => {
+    menuItems.forEach(item => {
       item.addEventListener("click", () => {
         // Удалить класс 'active' у всех пунктов меню
-        menuItems.forEach((i) => i.classList.remove("active-menu-item"));
+        menuItems.forEach(i => i.classList.remove("active-menu-item"));
         // Добавить класс 'active' к текущему пункту меню
         item.classList.add("active-menu-item");
       });
@@ -202,7 +203,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // ============================================================
   document
     .querySelectorAll(".lighting-calculator__control")
-    .forEach((control) => {
+    .forEach(control => {
       const input = control.querySelector(".dimension-input");
       const increment = control.querySelector(".btn-increment");
       const decrement = control.querySelector(".btn-decrement");
@@ -239,7 +240,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document
     .querySelectorAll(".lighting-calculator__control")
-    .forEach((control) => {
+    .forEach(control => {
       const input = control.querySelector("input.lighting-input");
       const increment = control.querySelector(".btn-increment");
       const decrement = control.querySelector(".btn-decrement");
@@ -273,7 +274,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.classList.toggle("popup-open");
   });
 
-  menuLinks.forEach((link) => {
+  menuLinks.forEach(link => {
     link.addEventListener("click", () => {
       mobileMenu.classList.remove("open");
       burger.classList.remove("open");
@@ -311,11 +312,15 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   function updatePlaceholder() {
     const input = document.getElementById("name");
-    if (window.innerWidth < 992) {
-      input.placeholder = "ФИО полностью";
-    } else {
-      input.placeholder = "Рекомендуем указывать ФИО полностью";
+    if (input) {
+      if (window.innerWidth < 992) {
+        input.placeholder = "ФИО полностью";
+      } else {
+        input.placeholder = "Рекомендуем указывать ФИО полностью";
+      }
     }
   }
+
   updatePlaceholder();
+  customSeletArrow();
 });

@@ -1166,6 +1166,7 @@
 
 	&__left {
 		flex: 1 1 36%;
+
 	}
 
 	// .catalog-element__right
@@ -1181,22 +1182,28 @@
 	}
 }
 
+.catalog-element-slider-main {
+	max-width: 100%;
+
+}
+
 .left-catalog-element {
 	// .left-catalog-element__img
+	max-width: clamp(34.6875rem, -7.173rem + 46.5116vw, 47.1875rem);
+	height: clamp(34.6875rem, -7.173rem + 46.5116vw, 47.1875rem);
 	background-color: $bgcard;
-	padding: 70px 40px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	position: relative;
 
 	&__img {
-		max-width: 611px;
-		height: 611px;
+		max-width: clamp(28.125rem, -5.5727rem + 37.4419vw, 38.1875rem);
+		height: clamp(28.125rem, -5.5727rem + 37.4419vw, 38.1875rem);
 	}
 }
 
 .right-catalog-element {
 	// .right-catalog-element__title
+	display: flex;
+	flex-direction: column;
 
 	&__title {
 		margin: 0px 0px;
@@ -1218,10 +1225,80 @@
 	}
 }
 
+.right-catalog-element__top {
+	flex: 1 1 auto;
+}
+
+.right-catalog-element__bottom {
+	max-width: clamp(44rem, 0.8837rem + 47.907vw, 56.875rem);
+}
+
+.catalog-element-slider-thumbs {
+	height: clamp(13.125rem, -3.6192rem + 18.6047vw, 18.125rem);
+}
+
+.catalog-element-slider-thumbs-wrapper {
+	height: clamp(13.125rem, -3.6192rem + 18.6047vw, 18.125rem);
+}
+
+.right-catalog-element__img {
+	width: clamp(10.625rem, -2.7703rem + 14.8837vw, 14.625rem);
+}
+
+.catalog-element-slider-thumbs-slide {
+	background: $bgcard;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	opacity: 0.6;
+	cursor: pointer;
+}
+
+.catalog-element-slider-thumbs .swiper-slide-thumb-active {
+	opacity: 1;
+	border-color: #007bff;
+}
+
+.catalog-element-slide__navigations {
+	display: flex;
+	gap: 5px;
+	position: absolute;
+	top: calc(100% - 56px);
+	left: calc(100% - 117px);
+	width: 117px;
+	height: 32px;
+	z-index: 100;
+}
+
+.catalog-element-slide__prev,
+.catalog-element-slide__next {
+	cursor: pointer;
+	transition: .3s;
+}
+
+.catalog-element-slide__prev:hover,
+.catalog-element-slide__next:hover {
+	color: #ffffff;
+	background-color: $color;
+}
+
+
+.catalog-element-slider-main-pagination {
+	display: none;
+}
+
+.catalog-element-slider-main-slide {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+//====================================
+
 .product-table {
 	display: table;
 	width: 100%;
-	font-family: sans-serif;
+
 
 	margin-top: 40px;
 	border-collapse: collapse;
@@ -1287,6 +1364,20 @@
 
 .pr-tb {
 	font-weight: 500;
+}
+
+.table-scroll-wrapper {
+	overflow-x: scroll;
+	max-width: calc(100vw - 30px);
+	-webkit-overflow-scrolling: touch;
+
+}
+
+.product-table {
+	width: 1870px;
+	min-width: 1870px;
+	overflow-x: scroll;
+	margin-bottom: 10px;
 }
 
 // ========================================== product-table-detail  ===================================
@@ -1435,6 +1526,21 @@
 			opacity: 0.6;
 		}
 	}
+}
+
+// ======================     left-catalog-element-detail      ===================================
+
+.left-catalog-element-detail {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.left-catalog-element__img-detail {}
+
+.product-table-detail {
+	width: 100%;
+	min-width: 100px;
 }
 
 // =======================    services-detail    =======================================
@@ -3460,7 +3566,10 @@
 	display: flex;
 	column-gap: 20px;
 
-	&__map {}
+	&__map {
+		width: clamp(21rem, 14.5331rem + 28.7417vw, 48.125rem);
+		height: clamp(15.125rem, 7.481rem + 33.9735vw, 47.1875rem);
+	}
 
 	// .content-contacts__addresses
 
@@ -3483,8 +3592,8 @@
 
 	&__img {
 		align-self: start;
-		width: 35px;
-		height: 35px;
+		width: clamp(1.5rem, 1.3361rem + 0.7285vw, 2.1875rem);
+		height: clamp(1.5rem, 1.3361rem + 0.7285vw, 2.1875rem);
 	}
 
 	// .contacts-addresses__address
@@ -3649,7 +3758,7 @@
 	// .content-about__body
 
 	&__body {
-		max-width: 1090px;
+		max-width: clamp(60.1875rem, 33.6061rem + 29.5349vw, 68.125rem);
 		margin-left: auto;
 		margin-top: 20px;
 	}
@@ -3699,7 +3808,7 @@
 	&__tile {
 		span {
 			display: block;
-			max-width: 1090px;
+			max-width: clamp(60.1875rem, 33.6061rem + 29.5349vw, 68.125rem);
 			margin-left: auto;
 		}
 	}

@@ -15,24 +15,28 @@ import {
 import { portfolioTabs } from "./js/portfolio";
 import customSeletArrow from "./js/customSeletArrow";
 
-const thumbsSwiper = new Swiper(".left-catalog-element__thumbs", {
-  direction: window.innerWidth >= 992 ? "vertical" : "horizontal",
-  slidesPerView: "auto",
+const catalogThumbs = new Swiper(".catalog-element-slider-thumbs", {
   spaceBetween: 10,
+  slidesPerView: 3,
   watchSlidesProgress: true,
-  watchOverflow: true,
 });
 
-const mainSwiper = new Swiper(".left-catalog-element__main", {
-  slidesPerView: 1,
+const catalogMain = new Swiper(".catalog-element-slider-main", {
   spaceBetween: 10,
-  watchOverflow: true,
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
   thumbs: {
-    swiper: thumbsSwiper,
+    swiper: catalogThumbs,
+  },
+  navigation: {
+    nextEl: ".catalog-element-slide__prev",
+    prevEl: ".catalog-element-slide__next",
   },
   pagination: {
-    el: ".swiper-pagination",
-    clickable: true,
+    el: ".catalog-element-slider-main-pagination",
+    //  dynamicBullets: true,
   },
 });
 

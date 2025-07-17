@@ -15,178 +15,6 @@ import {
 import { portfolioTabs } from "./js/portfolio";
 import customSeletArrow from "./js/customSeletArrow";
 
-const catalogThumbs = new Swiper(".catalog-element-slider-thumbs", {
-  spaceBetween: 10,
-  slidesPerView: 3,
-  watchSlidesProgress: true,
-});
-
-const catalogMain = new Swiper(".catalog-element-slider-main", {
-  spaceBetween: 10,
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-  },
-  thumbs: {
-    swiper: catalogThumbs,
-  },
-  navigation: {
-    nextEl: ".catalog-element-slide__prev",
-    prevEl: ".catalog-element-slide__next",
-  },
-  pagination: {
-    el: ".catalog-element-slider-main-pagination",
-    //  dynamicBullets: true,
-  },
-});
-
-new Swiper(".my-slide", {
-  slidesPerView: 4,
-  spaceBetween: 30,
-  loop: true,
-  breakpoints: {
-    320: {
-      slidesPerView: 2.2,
-      spaceBetween: 20,
-    },
-    // когда ширина экрана меньше 768 пикселей
-    769: {
-      slidesPerView: 3.2,
-      spaceBetween: 20,
-    },
-    // когда ширина экрана меньше 1024 пикселей
-    1200: {
-      slidesPerView: 4,
-      spaceBetween: 30,
-    },
-    // и так далее
-  },
-  navigation: {
-    nextEl: ".products-slide__prev",
-    prevEl: ".products-slide__next",
-  },
-  // pagination: {
-  //   el: ".swiper-pagination",
-  //   dynamicBullets: true,
-  // },
-});
-
-const swperPortfolio = new Swiper(".portfolio-slides", {
-  slidesPerView: 1,
-  // spaceBetween: 30,
-  // loop: true,
-  // breakpoints: {
-  //   320: {
-  //     slidesPerView: 1,
-  //     spaceBetween: 20,
-  //   },
-  //   // когда ширина экрана меньше 768 пикселей
-  //   560: {
-  //     slidesPerView: 2,
-  //     spaceBetween: 20,
-  //   },
-  //   // когда ширина экрана меньше 1024 пикселей
-  //   992: {
-  //     slidesPerView: 3,
-  //     spaceBetween: 30,
-  //   },
-  //   // и так далее
-  // },
-  navigation: {
-    nextEl: ".portfolio-slide__prev",
-    prevEl: ".portfolio-slide__next",
-  },
-  // pagination: {
-  //   el: ".swiper-pagination",
-  //   dynamicBullets: true,
-  // },
-  on: {
-    slideChange: function () {
-      const activeIndex = this.activeIndex;
-
-      const cards = document.querySelectorAll(".projects-portfolio__card");
-
-      cards.forEach((card, index) => {
-        card.classList.toggle("portfolio__card-active", index === activeIndex);
-      });
-    },
-  },
-});
-const projectNavSwiper = new Swiper(".projects-portfolio-mobile", {
-  slidesPerView: 3.2,
-  slidesPerGroup: 1,
-  spaceBetween: 10,
-  breakpoints: {
-    320: {
-      slidesPerView: 1.6,
-      spaceBetween: 20,
-    },
-    // когда ширина экрана меньше 768 пикселей
-    510: {
-      slidesPerView: 2,
-      spaceBetween: 20,
-    },
-    800: {
-      slidesPerView: 3,
-      spaceBetween: 10,
-    },
-    // когда ширина экрана меньше 1024 пикселей
-    900: {
-      slidesPerView: 3.4,
-      spaceBetween: 30,
-    },
-    // и так далее
-  },
-  scrollbar: {
-    el: ".swiper-scrollbar",
-    draggable: true,
-  },
-  on: {
-    click: function (swiper) {
-      const clickedIndex = swiper.clickedIndex;
-      if (typeof clickedIndex !== "undefined") {
-        swperPortfolio.slideTo(clickedIndex);
-
-        updateActiveNavSlide(clickedIndex);
-      }
-    },
-  },
-});
-
-// Синхронизация при смене основного слайда
-swperPortfolio.on("slideChange", () => {
-  projectNavSwiper.slideTo(swperPortfolio.activeIndex);
-});
-
-new Swiper(".portfolio-detail-slides", {
-  slidesPerView: 1,
-  // breakpoints: {
-  //   320: {
-  //     slidesPerView: 1,
-  //     spaceBetween: 20,
-  //   },
-  //   // когда ширина экрана меньше 768 пикселей
-  //   560: {
-  //     slidesPerView: 2,
-  //     spaceBetween: 20,
-  //   },
-  //   // когда ширина экрана меньше 1024 пикселей
-  //   992: {
-  //     slidesPerView: 3,
-  //     spaceBetween: 30,
-  //   },
-  //   // и так далее
-  // },
-  navigation: {
-    nextEl: ".portfolio-detail-slide__prev",
-    prevEl: ".portfolio-detail-slide__next",
-  },
-  pagination: {
-    el: ".portfolio-detail-pagination",
-    dynamicBullets: true,
-    clickable: true,
-  },
-});
 document.addEventListener("DOMContentLoaded", () => {
   const menuItems = document.querySelectorAll(".menu-top__item-link");
 
@@ -194,11 +22,187 @@ document.addEventListener("DOMContentLoaded", () => {
   const mobileMenu = document.querySelector(".mobile-menu");
   const menuLinks = document.querySelectorAll(".mobile-menu__list a");
 
+  const catalogThumbs = new Swiper(".catalog-element-slider-thumbs", {
+    spaceBetween: 10,
+    slidesPerView: 3,
+    watchSlidesProgress: true,
+  });
+
+  const catalogMain = new Swiper(".catalog-element-slider-main", {
+    spaceBetween: 10,
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    thumbs: {
+      swiper: catalogThumbs,
+    },
+    navigation: {
+      nextEl: ".catalog-element-slide__prev",
+      prevEl: ".catalog-element-slide__next",
+    },
+    pagination: {
+      el: ".catalog-element-slider-main-pagination",
+      //  dynamicBullets: true,
+    },
+  });
+
+  new Swiper(".my-slide", {
+    slidesPerView: 4,
+    spaceBetween: 30,
+    loop: true,
+    breakpoints: {
+      320: {
+        slidesPerView: 2.2,
+        spaceBetween: 20,
+      },
+      // когда ширина экрана меньше 768 пикселей
+      769: {
+        slidesPerView: 3.2,
+        spaceBetween: 20,
+      },
+      // когда ширина экрана меньше 1024 пикселей
+      1200: {
+        slidesPerView: 4,
+        spaceBetween: 30,
+      },
+      // и так далее
+    },
+    navigation: {
+      nextEl: ".products-slide__prev",
+      prevEl: ".products-slide__next",
+    },
+    // pagination: {
+    //   el: ".swiper-pagination",
+    //   dynamicBullets: true,
+    // },
+  });
+
+  const swperPortfolio = new Swiper(".portfolio-slides", {
+    slidesPerView: 1,
+    // spaceBetween: 30,
+    // loop: true,
+    // breakpoints: {
+    //   320: {
+    //     slidesPerView: 1,
+    //     spaceBetween: 20,
+    //   },
+    //   // когда ширина экрана меньше 768 пикселей
+    //   560: {
+    //     slidesPerView: 2,
+    //     spaceBetween: 20,
+    //   },
+    //   // когда ширина экрана меньше 1024 пикселей
+    //   992: {
+    //     slidesPerView: 3,
+    //     spaceBetween: 30,
+    //   },
+    //   // и так далее
+    // },
+    navigation: {
+      nextEl: ".portfolio-slide__prev",
+      prevEl: ".portfolio-slide__next",
+    },
+    // pagination: {
+    //   el: ".swiper-pagination",
+    //   dynamicBullets: true,
+    // },
+    on: {
+      slideChange: function () {
+        const activeIndex = this.activeIndex;
+
+        const cards = document.querySelectorAll(".projects-portfolio__card");
+
+        cards.forEach((card, index) => {
+          card.classList.toggle(
+            "portfolio__card-active",
+            index === activeIndex
+          );
+        });
+      },
+    },
+  });
+  const projectNavSwiper = new Swiper(".projects-portfolio-mobile", {
+    slidesPerView: 3.2,
+    slidesPerGroup: 1,
+    spaceBetween: 10,
+    breakpoints: {
+      320: {
+        slidesPerView: 1.6,
+        spaceBetween: 20,
+      },
+      // когда ширина экрана меньше 768 пикселей
+      510: {
+        slidesPerView: 2,
+        spaceBetween: 20,
+      },
+      800: {
+        slidesPerView: 3,
+        spaceBetween: 10,
+      },
+      // когда ширина экрана меньше 1024 пикселей
+      900: {
+        slidesPerView: 3.4,
+        spaceBetween: 30,
+      },
+      // и так далее
+    },
+    scrollbar: {
+      el: ".swiper-scrollbar",
+      draggable: true,
+    },
+    on: {
+      click: function (swiper) {
+        const clickedIndex = swiper.clickedIndex;
+        if (typeof clickedIndex !== "undefined") {
+          swperPortfolio.slideTo(clickedIndex);
+
+          updateActiveNavSlide(clickedIndex);
+        }
+      },
+    },
+  });
+
+  // Синхронизация при смене основного слайда
+  swperPortfolio.on("slideChange", () => {
+    projectNavSwiper.slideTo(swperPortfolio.activeIndex);
+  });
+
+  new Swiper(".portfolio-detail-slides", {
+    slidesPerView: 1,
+    // breakpoints: {
+    //   320: {
+    //     slidesPerView: 1,
+    //     spaceBetween: 20,
+    //   },
+    //   // когда ширина экрана меньше 768 пикселей
+    //   560: {
+    //     slidesPerView: 2,
+    //     spaceBetween: 20,
+    //   },
+    //   // когда ширина экрана меньше 1024 пикселей
+    //   992: {
+    //     slidesPerView: 3,
+    //     spaceBetween: 30,
+    //   },
+    //   // и так далее
+    // },
+    navigation: {
+      nextEl: ".portfolio-detail-slide__prev",
+      prevEl: ".portfolio-detail-slide__next",
+    },
+    pagination: {
+      el: ".portfolio-detail-pagination",
+      dynamicBullets: true,
+      clickable: true,
+    },
+  });
+
   if (menuItems) {
-    menuItems.forEach(item => {
+    menuItems.forEach((item) => {
       item.addEventListener("click", () => {
         // Удалить класс 'active' у всех пунктов меню
-        menuItems.forEach(i => i.classList.remove("active-menu-item"));
+        menuItems.forEach((i) => i.classList.remove("active-menu-item"));
         // Добавить класс 'active' к текущему пункту меню
         item.classList.add("active-menu-item");
       });
@@ -207,7 +211,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // ============================================================
   document
     .querySelectorAll(".lighting-calculator__control")
-    .forEach(control => {
+    .forEach((control) => {
       const input = control.querySelector(".dimension-input");
       const increment = control.querySelector(".btn-increment");
       const decrement = control.querySelector(".btn-decrement");
@@ -244,7 +248,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document
     .querySelectorAll(".lighting-calculator__control")
-    .forEach(control => {
+    .forEach((control) => {
       const input = control.querySelector("input.lighting-input");
       const increment = control.querySelector(".btn-increment");
       const decrement = control.querySelector(".btn-decrement");
@@ -278,7 +282,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.classList.toggle("popup-open");
   });
 
-  menuLinks.forEach(link => {
+  menuLinks.forEach((link) => {
     link.addEventListener("click", () => {
       mobileMenu.classList.remove("open");
       burger.classList.remove("open");

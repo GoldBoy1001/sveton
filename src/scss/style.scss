@@ -4,47 +4,47 @@
 
 // @import "variable.scss";
 ul li {
-	list-style: none;
+  list-style: none;
 }
 
 * {
-	padding: 0;
-	margin: 0;
-	border: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
 }
 
 h1 {
-	font-size: clamp(2rem, 1.0464rem + 4.2384vw, 6rem);
-	font-weight: 700;
-	margin: 40px 0px;
-	padding: 0px;
+  font-size: clamp(2rem, 1.0464rem + 4.2384vw, 6rem);
+  font-weight: 700;
+  margin: 40px 0px;
+  padding: 0px;
 }
 
 h2 {
-	font-weight: 500;
-	font-style: normal;
-	color: #111111;
-	font-size: clamp(1.5rem, 1.1424rem + 1.5894vw, 3rem);
+  font-weight: 500;
+  font-style: normal;
+  color: #111111;
+  font-size: clamp(1.5rem, 1.1424rem + 1.5894vw, 3rem);
 }
 
 h3 {
-	font-weight: 500;
-	font-style: normal;
-	color: #111111;
-	font-size: clamp(1.25rem, 1.0712rem + 0.7947vw, 2rem);
+  font-weight: 500;
+  font-style: normal;
+  color: #111111;
+  font-size: clamp(1.25rem, 1.0712rem + 0.7947vw, 2rem);
 }
 
 a {
-	text-decoration: none;
-	color: #111111;
+  text-decoration: none;
+  color: #111111;
 }
 
 body {
-	font-family: "Involve", sans-serif;
-	font-weight: normal;
-	font-style: normal;
-	font-size: 16px;
-	color: #111111;
+  font-family: "Involve", sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 16px;
+  color: #111111;
 }
 
 // =====================================================================
@@ -54,93 +54,93 @@ $color: #015dae;
 $bgcard: #f2f7fb;
 
 %text {
-	font-weight: 500;
-	font-style: normal;
-	font-size: clamp(1rem, 0.9404rem + 0.2649vw, 1.25rem);
+  font-weight: 500;
+  font-style: normal;
+  font-size: clamp(1rem, 0.9404rem + 0.2649vw, 1.25rem);
 }
 
 %grid {
-	display: grid;
-	grid-template: auto / 1fr minmax(auto, $width) 1fr;
-	padding: 40px 15px;
+  display: grid;
+  grid-template: auto / 1fr minmax(auto, $width) 1fr;
+  padding: 40px 15px;
 }
 
 %cardGrid {
-	grid-column: 2/3;
-	display: grid;
-	grid-template: auto / repeat(auto-fit, minmax(360px, 1fr));
-	column-gap: 20px;
-	row-gap: 40px;
+  grid-column: 2/3;
+  display: grid;
+  grid-template: auto / repeat(auto-fit, minmax(360px, 1fr));
+  column-gap: 20px;
+  row-gap: 40px;
 }
 
 %card {
-	display: flex;
-	flex-direction: column;
-	row-gap: 20px;
-	position: relative;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  position: relative;
 }
 
 %cardImg {
-	background-color: #f2f7fb;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	padding: 40px 0px;
+  background-color: #f2f7fb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 0px;
 }
 
 %cardText {
-	font-weight: 500;
-	font-size: 32px;
-	color: #111111;
-	font-style: normal;
+  font-weight: 500;
+  font-size: 32px;
+  color: #111111;
+  font-style: normal;
 }
 
 %cardIcon {
-	position: absolute;
-	top: 20px;
-	right: 20px;
-	width: 36px;
-	height: 36px;
-	cursor: pointer;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
 }
 
 %btn {
-	margin-top: 20px;
-	font-weight: 500;
-	padding: 20px 40px;
-	cursor: pointer;
-	transition: 0.3s;
-	color: #ffffff;
-	background-color: $color;
+  margin-top: 20px;
+  font-weight: 500;
+  padding: 20px 40px;
+  cursor: pointer;
+  transition: 0.3s;
+  color: #ffffff;
+  background-color: $color;
 
-	@media (hover: hover) {
-		&:hover {
-			background-color: #ffffff;
-			outline: 1px solid #111111;
-			color: #111111;
-		}
-	}
+  @media (hover: hover) {
+    &:hover {
+      background-color: #ffffff;
+      outline: 1px solid #111111;
+      color: #111111;
+    }
+  }
 }
 
 // ======================================================================
 body.popup-open {
-	overflow: hidden;
-	height: 100vh;
+  overflow: hidden;
+  height: 100vh;
 }
 
 .body {
-	min-height: 100vh;
-	display: grid;
-	grid-template: minmax(24px, auto) 1fr minmax(250px, auto) / 1fr;
-	grid-template-areas:
-		"header"
-		"main"
-		"footer";
+  min-height: 100vh;
+  display: grid;
+  grid-template: minmax(24px, auto) 1fr minmax(250px, auto) / 1fr;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
 }
 
 .swiper {
-	// width: 1870px;
-	// height: 300px;
+  // width: 1870px;
+  // height: 300px;
 }
 
 // ========== Blocks  =========================//
@@ -150,10 +150,14 @@ body.popup-open {
 @import "footer.scss";
 @import "./adaptiv.scss";
 
-@media (max-width: 1440px) {}
+@media (max-width: 1440px) {
+}
 
-@media (max-width: 991.98px) {}
+@media (max-width: 991.98px) {
+}
 
-@media (max-width: 768px) {}
+@media (max-width: 768px) {
+}
 
-@media (max-width: 360px) {}
+@media (max-width: 360px) {
+}

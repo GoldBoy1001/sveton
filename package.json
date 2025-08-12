@@ -12,7 +12,8 @@
   "homepage": "https://goldboy1001.github.io/sveton/",
   "devDependencies": {
     "sass": "^1.89.1",
-    "vite": "^6.3.5"
+    "vite": "^6.3.5",
+    "vite-plugin-imagemin": "^0.7.2"
   },
   "dependencies": {
     "gh-pages": "^6.3.0",

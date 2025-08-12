@@ -2,7 +2,7 @@ import { defineConfig } from "vite";
 import { resolve } from "path";
 
 export default defineConfig({
-  base: "/", // или /имя-репозитория/ для GitHub Pages
+  base: process.env.NODE_ENV === "production" ? "/sveton/" : "/",
   build: {
     rollupOptions: {
       input: {
@@ -26,6 +26,17 @@ export default defineConfig({
         search: resolve(__dirname, "search.html"),
         about: resolve(__dirname, "about.html"),
       },
+      output: {
+        manualChunks(id) {
+          if (id.includes("src/js/swiper-bundle.min")) {
+            return "vendor-swiper";
+          }
+          if (id.includes("node_modules")) {
+            return "vendor";
+          }
+        },
+      },
     },
+    cssMinify: true,
   },
 });

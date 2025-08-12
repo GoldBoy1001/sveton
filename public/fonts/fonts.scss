@@ -1,64 +1,64 @@
-/* src/assets/fonts/fonts.scss */
+/* Optimized font declarations for Vite public/ directory */
 
 /* Regular */
 @font-face {
   font-family: "Involve";
-  src: url("/sveton/assets/fonts/Involve-Regular.woff2") format("woff2"),
-    url("/sveton/assets/fonts/Involve-Regular.otf") format("opentype");
+  src: url("../fonts/Involve-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
-}
-
-/* Bold */
-@font-face {
-  font-family: "Involve";
-  src: url("/sveton/assets/fonts/Involve-Bold.woff2") format("woff2"),
-    url("/sveton/assets/fonts/Involve-Bold.otf") format("opentype");
-  font-weight: 700;
-  font-style: normal;
+  font-display: swap;
 }
 
 /* Medium */
 @font-face {
   font-family: "Involve";
-  src: url("/sveton/assets/fonts/Involve-Medium.woff2") format("woff2"),
-    url("/sveton/assets/fonts/Involve-Medium.otf") format("opentype");
+  src: url("../fonts/Involve-Medium.woff2") format("woff2");
   font-weight: 500;
   font-style: normal;
+  font-display: swap;
 }
 
 /* Medium Oblique */
 @font-face {
   font-family: "Involve";
-  src: url("/sveton/assets/fonts/Involve-MediumOblique.woff2") format("woff2"),
-    url("/sveton/assets/fonts/Involve-MediumOblique.otf") format("opentype");
+  src: url("../fonts/Involve-MediumOblique.woff2") format("woff2");
   font-weight: 500;
   font-style: oblique;
+  font-display: swap;
 }
 
 /* Oblique */
 @font-face {
   font-family: "Involve";
-  src: url("/sveton/assets/fonts/Involve-Oblique.woff2") format("woff2"),
-    url("/sveton/assets/fonts/Involve-Oblique.otf") format("opentype");
+  src: url("../fonts/Involve-Oblique.woff2") format("woff2");
   font-weight: 400;
   font-style: oblique;
+  font-display: swap;
 }
 
 /* SemiBold */
 @font-face {
   font-family: "Involve";
-  src: url("/sveton/assets/fonts/Involve-SemiBold.woff2") format("woff2"),
-    url("/sveton/assets/fonts/Involve-SemiBold.otf") format("opentype");
+  src: url("../fonts/Involve-SemiBold.woff2") format("woff2");
   font-weight: 600;
   font-style: normal;
+  font-display: swap;
 }
 
 /* SemiBold Oblique */
 @font-face {
   font-family: "Involve";
-  src: url("/sveton/assets/fonts/Involve-SemiBoldOblique.woff2") format("woff2"),
-    url("/sveton/assets/fonts/Involve-SemiBoldOblique.otf") format("opentype");
+  src: url("../fonts/Involve-SemiBoldOblique.woff2") format("woff2");
   font-weight: 600;
   font-style: oblique;
+  font-display: swap;
+}
+
+/* Bold */
+@font-face {
+  font-family: "Involve";
+  src: url("../fonts/Involve-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
 }

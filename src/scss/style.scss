@@ -2,6 +2,14 @@
 @import "../../public/fonts/fonts.scss";
 @import "./slider/swiper-bundle.min.css";
 
+img[loading="lazy"] {
+  contain: paint;
+}
+
+img[decoding="async"] {
+  content-visibility: auto;
+}
+
 // @import "variable.scss";
 ul li {
   list-style: none;

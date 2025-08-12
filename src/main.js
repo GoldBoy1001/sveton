@@ -1,222 +1,71 @@
 import "./scss/style.scss";
-import { Swiper } from "./js/swiper-bundle.min";
-import {
-  lightingParameters,
-  disabledBtn,
-  popupCalculationAlgorithm,
-  popupSelectingLuminaire,
-  popupRequestCalculation,
-  popupFilesForm,
-} from "./js/lightingParameters";
-import {
-  popupSelectingLuminaireSwitching,
-  popupCalculationAlgorithmSwitching,
-} from "./js/automaticSswitching";
-import { portfolioTabs } from "./js/portfolio";
-import customSeletArrow from "./js/customSeletArrow";
 
-document.addEventListener("DOMContentLoaded", () => {
+async function loadSwiperIfNeeded() {
+  const needsSwiper = document.querySelector(
+    
+    ".catalog-element-slider-thumbs, .catalog-element-slider-main, .my-slide, .portfolio-slides, .projects-portfolio-mobile, .portfolio-detail-slides"
+  );
+  if (!needsSwiper) return null;
+
+  const [{ Swiper },] = await Promise.all([
+    import("./js/swiper-bundle.min"),
+    import("./scss/slider/swiper-bundle.min.css"),
+  ]);
+  return Swiper;
+}
+
+function markImagesLazy() {
+  const images = Array.from(document.querySelectorAll("img"));
+  images.forEach((img, index) => {
+    if (!img.hasAttribute("loading")) {
+      img.loading = index < 3 ? "eager" : "lazy";
+    }
+    if (!img.hasAttribute("decoding")) {
+      img.decoding = "async";
+    }
+  });
+}
+
+function initMenu() {
   const menuItems = document.querySelectorAll(".menu-top__item-link");
-
-  const burger = document.querySelector(".burger");
-  const mobileMenu = document.querySelector(".mobile-menu");
-  const menuLinks = document.querySelectorAll(".mobile-menu__list a");
-
-  const catalogThumbs = new Swiper(".catalog-element-slider-thumbs", {
-    spaceBetween: 10,
-    slidesPerView: 3,
-    watchSlidesProgress: true,
-  });
-
-  const catalogMain = new Swiper(".catalog-element-slider-main", {
-    spaceBetween: 10,
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
-    thumbs: {
-      swiper: catalogThumbs,
-    },
-    navigation: {
-      nextEl: ".catalog-element-slide__prev",
-      prevEl: ".catalog-element-slide__next",
-    },
-    pagination: {
-      el: ".catalog-element-slider-main-pagination",
-      //  dynamicBullets: true,
-    },
-  });
-
-  new Swiper(".my-slide", {
-    slidesPerView: 4,
-    spaceBetween: 30,
-    loop: true,
-    breakpoints: {
-      320: {
-        slidesPerView: 2.2,
-        spaceBetween: 20,
-      },
-      // когда ширина экрана меньше 768 пикселей
-      769: {
-        slidesPerView: 3.2,
-        spaceBetween: 20,
-      },
-      // когда ширина экрана меньше 1024 пикселей
-      1200: {
-        slidesPerView: 4,
-        spaceBetween: 30,
-      },
-      // и так далее
-    },
-    navigation: {
-      nextEl: ".products-slide__prev",
-      prevEl: ".products-slide__next",
-    },
-    // pagination: {
-    //   el: ".swiper-pagination",
-    //   dynamicBullets: true,
-    // },
-  });
-
-  const swperPortfolio = new Swiper(".portfolio-slides", {
-    slidesPerView: 1,
-    // spaceBetween: 30,
-    // loop: true,
-    // breakpoints: {
-    //   320: {
-    //     slidesPerView: 1,
-    //     spaceBetween: 20,
-    //   },
-    //   // когда ширина экрана меньше 768 пикселей
-    //   560: {
-    //     slidesPerView: 2,
-    //     spaceBetween: 20,
-    //   },
-    //   // когда ширина экрана меньше 1024 пикселей
-    //   992: {
-    //     slidesPerView: 3,
-    //     spaceBetween: 30,
-    //   },
-    //   // и так далее
-    // },
-    navigation: {
-      nextEl: ".portfolio-slide__prev",
-      prevEl: ".portfolio-slide__next",
-    },
-    // pagination: {
-    //   el: ".swiper-pagination",
-    //   dynamicBullets: true,
-    // },
-    on: {
-      slideChange: function () {
-        const activeIndex = this.activeIndex;
-
-        const cards = document.querySelectorAll(".projects-portfolio__card");
-
-        cards.forEach((card, index) => {
-          card.classList.toggle(
-            "portfolio__card-active",
-            index === activeIndex
-          );
-        });
-      },
-    },
-  });
-  const projectNavSwiper = new Swiper(".projects-portfolio-mobile", {
-    slidesPerView: 3.2,
-    slidesPerGroup: 1,
-    spaceBetween: 10,
-    breakpoints: {
-      320: {
-        slidesPerView: 1.6,
-        spaceBetween: 20,
-      },
-      // когда ширина экрана меньше 768 пикселей
-      510: {
-        slidesPerView: 2,
-        spaceBetween: 20,
-      },
-      800: {
-        slidesPerView: 3,
-        spaceBetween: 10,
-      },
-      // когда ширина экрана меньше 1024 пикселей
-      900: {
-        slidesPerView: 3.4,
-        spaceBetween: 30,
-      },
-      // и так далее
-    },
-    scrollbar: {
-      el: ".swiper-scrollbar",
-      draggable: true,
-    },
-    on: {
-      click: function (swiper) {
-        const clickedIndex = swiper.clickedIndex;
-        if (typeof clickedIndex !== "undefined") {
-          swperPortfolio.slideTo(clickedIndex);
-
-          updateActiveNavSlide(clickedIndex);
-        }
-      },
-    },
-  });
-
-  // Синхронизация при смене основного слайда
-  swperPortfolio.on("slideChange", () => {
-    projectNavSwiper.slideTo(swperPortfolio.activeIndex);
-  });
-
-  new Swiper(".portfolio-detail-slides", {
-    slidesPerView: 1,
-    // breakpoints: {
-    //   320: {
-    //     slidesPerView: 1,
-    //     spaceBetween: 20,
-    //   },
-    //   // когда ширина экрана меньше 768 пикселей
-    //   560: {
-    //     slidesPerView: 2,
-    //     spaceBetween: 20,
-    //   },
-    //   // когда ширина экрана меньше 1024 пикселей
-    //   992: {
-    //     slidesPerView: 3,
-    //     spaceBetween: 30,
-    //   },
-    //   // и так далее
-    // },
-    navigation: {
-      nextEl: ".portfolio-detail-slide__prev",
-      prevEl: ".portfolio-detail-slide__next",
-    },
-    pagination: {
-      el: ".portfolio-detail-pagination",
-      dynamicBullets: true,
-      clickable: true,
-    },
-  });
-
-  if (menuItems) {
+  if (menuItems && menuItems.length) {
     menuItems.forEach((item) => {
       item.addEventListener("click", () => {
-        // Удалить класс 'active' у всех пунктов меню
         menuItems.forEach((i) => i.classList.remove("active-menu-item"));
-        // Добавить класс 'active' к текущему пункту меню
         item.classList.add("active-menu-item");
       });
     });
   }
-  // ============================================================
+}
+
+function initBurgerMenu() {
+  const burger = document.querySelector(".burger");
+  const mobileMenu = document.querySelector(".mobile-menu");
+  const menuLinks = document.querySelectorAll(".mobile-menu__list a");
+  if (!burger || !mobileMenu) return;
+
+  burger.addEventListener("click", () => {
+    mobileMenu.classList.toggle("open");
+    burger.classList.toggle("open");
+    document.body.classList.toggle("popup-open");
+  });
+
+  menuLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      mobileMenu.classList.remove("open");
+      burger.classList.remove("open");
+      document.body.classList.remove("popup-open");
+    });
+  });
+}
+
+function initCalculatorControls() {
   document
     .querySelectorAll(".lighting-calculator__control")
     .forEach((control) => {
       const input = control.querySelector(".dimension-input");
       const increment = control.querySelector(".btn-increment");
       const decrement = control.querySelector(".btn-decrement");
-
-      // Безопасная проверка на наличие всех элементов
       if (!input || !increment || !decrement) return;
 
       increment.addEventListener("click", () => {
@@ -266,69 +115,178 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
     });
-  lightingParameters();
-  disabledBtn();
-  popupCalculationAlgorithm();
-  popupSelectingLuminaire();
-  popupRequestCalculation();
-  popupFilesForm();
-  popupSelectingLuminaireSwitching();
-  popupCalculationAlgorithmSwitching();
-  portfolioTabs();
+}
 
-  burger.addEventListener("click", () => {
-    mobileMenu.classList.toggle("open");
-    burger.classList.toggle("open");
-    document.body.classList.toggle("popup-open");
-  });
+async function initSwipers() {
+  const Swiper = await loadSwiperIfNeeded();
+  if (!Swiper) return;
 
-  menuLinks.forEach((link) => {
-    link.addEventListener("click", () => {
-      mobileMenu.classList.remove("open");
-      burger.classList.remove("open");
-      document.body.classList.remove("popup-open");
+  const thumbsEl = document.querySelector(".catalog-element-slider-thumbs");
+  const mainEl = document.querySelector(".catalog-element-slider-main");
+  let catalogThumbs = null;
+  if (thumbsEl) {
+    catalogThumbs = new Swiper(".catalog-element-slider-thumbs", {
+      spaceBetween: 10,
+      slidesPerView: 3,
+      watchSlidesProgress: true,
     });
-  });
-
-  // Клик по карточке — переключает слайд
-  document
-    .querySelectorAll(".projects-portfolio__card")
-    .forEach((card, index) => {
-      card.addEventListener("click", () => {
-        swperPortfolio.slideTo(index);
-      });
+  }
+  if (mainEl) {
+    new Swiper(".catalog-element-slider-main", {
+      spaceBetween: 10,
+      thumbs: catalogThumbs ? { swiper: catalogThumbs } : undefined,
+      navigation: {
+        nextEl: ".catalog-element-slide__prev",
+        prevEl: ".catalog-element-slide__next",
+      },
+      pagination: { el: ".catalog-element-slider-main-pagination" },
     });
-  // Обновление активной кнопки
-  function updateActiveNavSlide(index) {
-    const cards = document.querySelectorAll(".projects-portfolio-mobile-slide");
-
-    cards.forEach((card, i) => {
-      card.classList.toggle(
-        "projects-portfolio-mobile-slide-active",
-        i === index
-      );
-    });
-
-    // Прокрутка кнопок при смене основного слайда
-    projectNavSwiper.slideTo(index);
   }
 
-  // Слушатель на основной слайдер
-  swperPortfolio.on("slideChange", function () {
-    const activeIndex = swperPortfolio.activeIndex;
-    updateActiveNavSlide(activeIndex);
-  });
-  function updatePlaceholder() {
-    const input = document.getElementById("name");
-    if (input) {
-      if (window.innerWidth < 992) {
-        input.placeholder = "ФИО полностью";
-      } else {
-        input.placeholder = "Рекомендуем указывать ФИО полностью";
-      }
+  if (document.querySelector(".my-slide")) {
+    new Swiper(".my-slide", {
+      slidesPerView: 4,
+      spaceBetween: 30,
+      loop: true,
+      breakpoints: {
+        320: { slidesPerView: 2.2, spaceBetween: 20 },
+        769: { slidesPerView: 3.2, spaceBetween: 20 },
+        1200: { slidesPerView: 4, spaceBetween: 30 },
+      },
+      navigation: {
+        nextEl: ".products-slide__prev",
+        prevEl: ".products-slide__next",
+      },
+    });
+  }
+
+  let swperPortfolio = null;
+  if (document.querySelector(".portfolio-slides")) {
+    swperPortfolio = new Swiper(".portfolio-slides", {
+      slidesPerView: 1,
+      navigation: {
+        nextEl: ".portfolio-slide__prev",
+        prevEl: ".portfolio-slide__next",
+      },
+      on: {
+        slideChange: function () {
+          const activeIndex = this.activeIndex;
+          const cards = document.querySelectorAll(".projects-portfolio__card");
+          cards.forEach((card, index) => {
+            card.classList.toggle("portfolio__card-active", index === activeIndex);
+          });
+        },
+      },
+    });
+  }
+
+  if (document.querySelector(".projects-portfolio-mobile")) {
+    const projectNavSwiper = new Swiper(".projects-portfolio-mobile", {
+      slidesPerView: 3.2,
+      slidesPerGroup: 1,
+      spaceBetween: 10,
+      breakpoints: {
+        320: { slidesPerView: 1.6, spaceBetween: 20 },
+        510: { slidesPerView: 2, spaceBetween: 20 },
+        800: { slidesPerView: 3, spaceBetween: 10 },
+        900: { slidesPerView: 3.4, spaceBetween: 30 },
+      },
+      scrollbar: { el: ".swiper-scrollbar", draggable: true },
+      on: {
+        click: function (swiper) {
+          const clickedIndex = swiper.clickedIndex;
+          if (typeof clickedIndex !== "undefined" && swperPortfolio) {
+            swperPortfolio.slideTo(clickedIndex);
+            updateActiveNavSlide(clickedIndex);
+          }
+        },
+      },
+    });
+
+    function updateActiveNavSlide(index) {
+      const cards = document.querySelectorAll(
+        ".projects-portfolio-mobile-slide"
+      );
+      cards.forEach((card, i) => {
+        card.classList.toggle("projects-portfolio-mobile-slide-active", i === index);
+      });
+      projectNavSwiper.slideTo(index);
+    }
+
+    if (swperPortfolio) {
+      swperPortfolio.on("slideChange", function () {
+        const activeIndex = swperPortfolio.activeIndex;
+        updateActiveNavSlide(activeIndex);
+      });
     }
   }
 
+  if (document.querySelector(".portfolio-detail-slides")) {
+    new Swiper(".portfolio-detail-slides", {
+      slidesPerView: 1,
+      navigation: {
+        nextEl: ".portfolio-detail-slide__prev",
+        prevEl: ".portfolio-detail-slide__next",
+      },
+      pagination: {
+        el: ".portfolio-detail-pagination",
+        dynamicBullets: true,
+        clickable: true,
+      },
+    });
+  }
+}
+
+async function initFeatureModules() {
+  const needsLightingCalculator = document.querySelector(
+    ".lighting-calculator, .lighting-calculator__control, .lighting-calculator__submit"
+  );
+  if (needsLightingCalculator) {
+    const lightingModule = await import("./js/lightingParameters");
+    lightingModule.lightingParameters?.();
+    lightingModule.disabledBtn?.();
+    lightingModule.popupCalculationAlgorithm?.();
+    lightingModule.popupSelectingLuminaire?.();
+    lightingModule.popupRequestCalculation?.();
+    lightingModule.popupFilesForm?.();
+  }
+
+  const needsAutoSwitching = document.querySelector(
+    ".automatic-switching, .automatic-switching__btn, .automatic-switching__note"
+  );
+  if (needsAutoSwitching) {
+    const autoModule = await import("./js/automaticSswitching");
+    autoModule.popupSelectingLuminaireSwitching?.();
+    autoModule.popupCalculationAlgorithmSwitching?.();
+  }
+
+  if (document.querySelector(".portfolio-index__tab")) {
+    const portfolioModule = await import("./js/portfolio");
+    portfolioModule.portfolioTabs?.();
+  }
+
+  if (document.getElementById("categorySelect")) {
+    const customSelectModule = await import("./js/customSeletArrow");
+    customSelectModule.default?.();
+  }
+}
+
+function updatePlaceholder() {
+  const input = document.getElementById("name");
+  if (!input) return;
+  if (window.innerWidth < 992) {
+    input.placeholder = "ФИО полностью";
+  } else {
+    input.placeholder = "Рекомендуем указывать ФИО полностью";
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  markImagesLazy();
+  initMenu();
+  initBurgerMenu();
+  initCalculatorControls();
+  initFeatureModules();
+  initSwipers();
   updatePlaceholder();
-  customSeletArrow();
 });
